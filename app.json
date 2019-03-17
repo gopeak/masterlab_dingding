@@ -32,26 +32,26 @@
       },
       {
         "pagePath": "page/project/list/index",
-        "icon": "image/toolbar/issue.png",
-        "activeIcon": "image/toolbar/issue_active.png",
+        "icon": "image/toolbar/tasks.png",
+        "activeIcon": "image/toolbar/tasks_active.png",
         "name": "事 项"
       },
       {
         "pagePath": "page/project/workbench/index",
-        "icon": "image/toolbar/sprint.png",
-        "activeIcon": "image/toolbar/sprint_active.png",
+        "icon": "image/toolbar/rocket.png",
+        "activeIcon": "image/toolbar/rocket_active.png",
         "name": "迭 代"
       },
       {
         "pagePath": "page/biz/pages/list/index",
-        "icon": "image/toolbar/doc.png",
-        "activeIcon": "image/toolbar/doc_active.png",
+        "icon": "image/toolbar/document.png",
+        "activeIcon": "image/toolbar/document_active.png",
         "name": "文 档"
       },
       {
         "pagePath": "page/biz/pages/tag/index",
-        "icon": "image/toolbar/more.png",
-        "activeIcon": "image/toolbar/more_active.png",
+        "icon": "image/toolbar/more2.png",
+        "activeIcon": "image/toolbar/more2_active.png",
         "name": "更 多"
       }
     ]
