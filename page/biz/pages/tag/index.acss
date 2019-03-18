@@ -1,8 +1,18 @@
 @import '../../components/tag/index.acss';
 
 .container {
-    padding: 0 20rpx;
+    background-color:white;
+    border-bottom: 1px solid #ddd;
+    bottom: 1;
+    padding-top: 10rpx;
+    padding-right: 10rpx;
+    padding-left: 10rpx;
+    padding-bottom: 10rpx;
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+    margin-top: 20rpx;
 }
+
 
 .mt-24 {
     margin-top: 24rpx;

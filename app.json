@@ -1,6 +1,7 @@
 {
   "pages": [
-    "page/project/index",
+    "page/project/issue2/index",
+    "page/project/workbench/index",
     "page/biz/index",
     "page/biz/pages/collapse/index",
     "page/biz/pages/dropdown/index",
@@ -8,7 +9,6 @@
     "page/biz/pages/grid/index",
     "page/biz/pages/list/index",
     "page/project/list/index",
-    "page/project/workbench/index",
     "page/biz/pages/tag/index"
   ],
   "window": {
@@ -25,19 +25,19 @@
     "backgroundColor": "#F5F5F9",
     "items": [
       {
-        "pagePath": "page/project/index",
+        "pagePath": "page/project/issue2/index",
         "icon": "image/toolbar/index.png",
         "activeIcon": "image/toolbar/index_active.png",
         "name": "首 页"
       },
       {
-        "pagePath": "page/project/list/index",
+        "pagePath": "page/project/workbench/index",
         "icon": "image/toolbar/tasks.png",
         "activeIcon": "image/toolbar/tasks_active.png",
         "name": "事 项"
       },
       {
-        "pagePath": "page/project/workbench/index",
+        "pagePath": "page/project/list/index",
         "icon": "image/toolbar/rocket.png",
         "activeIcon": "image/toolbar/rocket_active.png",
         "name": "迭 代"
@@ -49,7 +49,7 @@
         "name": "文 档"
       },
       {
-        "pagePath": "page/biz/pages/tag/index",
+        "pagePath": "page/biz/index",
         "icon": "image/toolbar/more2.png",
         "activeIcon": "image/toolbar/more2_active.png",
         "name": "更 多"
