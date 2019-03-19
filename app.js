@@ -11,6 +11,7 @@ App({
     console.log('App Hide');
   },
   globalData: {
+    sysInfo: {},
     hasLogin: false,
   },
 });

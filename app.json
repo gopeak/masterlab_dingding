@@ -9,7 +9,9 @@
     "page/biz/pages/grid/index",
     "page/biz/pages/list/index",
     "page/project/list/index",
-    "page/biz/pages/tag/index"
+    "page/project/sprint/index",
+    "page/biz/pages/tag/index",
+    "page/line/index"
   ],
   "window": {
     "enableWK": "YES",
@@ -37,16 +39,16 @@
         "name": "事 项"
       },
       {
-        "pagePath": "page/project/list/index",
+        "pagePath": "page/project/sprint/index",
         "icon": "image/toolbar/rocket.png",
         "activeIcon": "image/toolbar/rocket_active.png",
         "name": "迭 代"
       },
       {
-        "pagePath": "page/biz/pages/list/index",
+        "pagePath": "page/line/index",
         "icon": "image/toolbar/document.png",
         "activeIcon": "image/toolbar/document_active.png",
-        "name": "文 档"
+        "name": "统 计"
       },
       {
         "pagePath": "page/biz/index",
