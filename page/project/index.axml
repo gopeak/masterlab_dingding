@@ -1,0 +1,186 @@
+<import src="/util/lifecycle.axml"/>
+<import src="/util/grid/index.axml"/>
+<import src="/util/items/index.axml"/>
+
+  <view>
+      <template is="project-DropdownSelect" data={{...dropdownSelectData}} />
+   </view>
+
+   
+  <template name="project-DropdownSelect">
+      <view a:if="{{listData}}" class="a-dropdown-wrapper {{active ? 'expand' : ''}}">
+          <view id="a-dropdown-nav" class="a-dropdown-nav">
+              <block a:for={{listData}}>
+                  <view
+                      class="a-dropdown-nav-item {{ active && selectedNav ===index ? 'active' : ''}}"
+                      hover-class="a-dropdown-nav-item-hover"
+                      onTap="_onNavItemTap"
+                      data-index={{index}}
+                  >
+                       <image src="/image/logo.png" mode="scaleToFill" class="project-icon"/>
+                       <text class="project-text"> {{item.nav}}</text>
+                       <view class="icon-project-select triangle "></view>
+                  </view>
+              </block>
+          </view> 
+          <scroll-view scroll-y="{{true}}" class="a-dropdown-contents">
+              <block a:for={{listData}} a:for-item="list" a:for-index="parentIndex">
+                  <view hidden="{{selectedNav !== parentIndex}}">
+                      <view class="a-dropdown-list-items {{active? 'show' : ''}}">
+                          <block a:for={{list.data}} >
+                              <view
+                                  class="a-dropdown-list-item {{index !== (list.data.length - 1) ? '': 'last'}} {{index === list.selectedItem ? 'selected': ''}}"
+                                  hover-class="a-dropdown-list-item-hover"
+                                  onTap="{{list.onListItemTap || '_onListItemTap'}}"
+                                  catchTap="{{list.onListItemTap || '_catchListItemTap'}}"
+                                  data-index={{index}}
+                                  data-parentIndex={{parentIndex}}
+                                  data-title={{item.title}}
+                              >
+                                  <view class="a-dropdown-list-item-line {{item.textMode ? 'a-dropdown-list-item-line-' + item.textMode : ''}}">
+                                      <image a:if={{item.thumb}} class="a-dropdown-list-item-thumb" src="{{item.thumb}}" mode="scaleToFill" />
+                                      <text class="a-dropdown-list-item-content">{{item.title}}</text>
+                                      <view a:if={{item.extra}} class="a-dropdown-list-item-extra" >{{item.extra}}</view>
+                                      <view class="a-dropdown-list-item-check"/>
+                                      <view class="a-dropdown-list-item-bottom" />
+                                  </view>
+                              </view>
+                          </block>
+                      </view>
+                  </view>
+              </block>
+          </scroll-view> 
+          <view class="a-dropdown-placeholder"></view>
+          <view class="a-dropdown-bg" onTap="_catchBgTap"></view>
+      </view>
+  </template>
+
+  <view>
+      <template is="ProjectGrid" data={{...grid}} >
+  </view> 
+  <template name="ProjectGrid">
+      <view class="grid">
+          <block a:for="{{list}}">
+              <view
+              style="width:{{100/(columnNum || 4)}}%;padding-top:{{100/(columnNum || 4)}}%;" 
+              class="grid-item" onTap="handleItemTap"
+              data-index={{index}}>
+                  <view class="grid-item-wrapper">
+                      <text class="grid-header" >{{item.header}}</text>
+                      <text class="grid-text" style="color:{{item.color}}">{{item.text}}</text>
+                  </view>
+              </view>
+          </block>
+      </view>
+  </template>
+
+
+<view> 
+      <template is="MyAssignee" data={{...listData}} />
+</view>
+
+<template name="MyAssignee">
+    <scroll-view scroll-y>
+        <view>
+            <view class="a-list">
+                 <view class="a-list-header">我待处理的</view>
+                <view a:if={{data}} class="a-list-items">
+                    <block a:for={{data}}>
+                        <view
+                            class="a-list-item {{index !== (data.length - 1) ? '': 'last'}} am-list-item-{{item.align || 'middle'}}"
+                            hover-class="a-list-item-hover"
+                            onTap="{{onItemTap}}"
+                            data-index={{index}}
+                        >
+                            <view class="a-list-item-line {{item.textMode ? 'a-list-item-line-' + item.textMode : ''}}">
+                                <image a:if={{item.thumb}} class="a-list-item-icon" src="{{item.thumb}}" mode="scaleToFill" />
+                                <text class="a-list-item-prority a-list-item-icon">{{item.prority}}</text>
+                                <text class="a-list-item-content_index">{{item.title}}</text>
+                                <view a:if={{item.extra}} class="a-list-item-extra" >{{item.extra}}</view>
+                                <view a:if={{item.arrow}} class="a-list-arrow a-list-arrow-{{item.arrow}}" />
+                                <view class="a-list-item-bottom" />
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</template>
+
+<scroll-view scroll-y>
+    <view>
+        <view class="a-list">
+
+          <view class="a-list-header">动 态</view>
+      
+          <view class="page-section">
+            <view class="page-section-demo">
+              <view class="stream">
+                <view class="post">
+                  <view class="postUser">
+                    <view class="postUser__name"><image class="a-list-item-icon" src="/image/avatar/girl.png" />Chris</view>
+                  </view>
+                  <view class="postBody">
+                    <view class="postBody__content">
+                      欢迎使用钉钉小程序！！！
+                    </view>
+                    <view class="postBody__date">
+                      May 20
+                    </view>
+                  </view>
+                </view>
+
+                <view class="post">
+                  <view class="postUser">
+                    <view class="postUser__name"><image class="a-list-item-icon" src="/image/avatar/boy.png" />Jack</view>
+                  </view>
+                  <view class="postBody">
+                    <view class="postBody__content">
+                      @Chris 我该如何上手？
+                    </view>
+                    <view class="postBody__date">
+                      May 21
+                    </view>
+                  </view>
+                </view>
+
+                <view class="post">
+                  <view class="postUser">
+                    <view class="postUser__name"><image class="a-list-item-icon" src="/image/avatar/girl.png" />Chris</view>
+                  </view>
+                  <view class="postBody">
+                    <view class="postBody__content">
+                      你可以查看 Demo，对小程序有一个简单的了解；然后下载我们的 IDE 进行开发。
+                    </view>
+                    <view class="postBody__date">
+                      May 22
+                    </view>
+                  </view>
+                </view> 
+
+                <view class="post" >
+                  <view class="postUser">
+                    <view class="postUser__name"><image class="a-list-item-icon" src="/image/avatar/avatar.png" />Jessie</view>
+                  </view>
+                  <view class="postBody">
+                    <view class="postBody__content">
+                      赞! +1
+                    </view>
+                    <view class="postBody__date">
+                      June 1
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+  </view>
+</scroll-view>
+
+<template
+        key="lifecycle"
+        is="lifecycle"
+        a:if="{{debug}}"
+/>
