@@ -1,5 +1,6 @@
 {
   "pages": [
+    "page/project/index",
     "page/project/issue2/index",
     "page/project/workbench/index",
     "page/biz/index",
@@ -11,8 +12,8 @@
     "page/project/list/index",
     "page/project/issue/index",
     "page/project/sprint/index",
-    "page/biz/pages/tag/index",
-    "page/line/index"
+    "page/project/stat/index",
+    "page/biz/pages/tag/index"
   ],
   "window": {
     "enableWK": "YES",
@@ -28,13 +29,13 @@
     "backgroundColor": "#F5F5F9",
     "items": [
       {
-        "pagePath": "page/project/issue2/index",
+        "pagePath": "page/project/index",
         "icon": "image/toolbar/index.png",
         "activeIcon": "image/toolbar/index_active.png",
         "name": "首 页"
       },
       {
-        "pagePath": "page/project/issue/index",
+        "pagePath": "page/project/issue2/index",
         "icon": "image/toolbar/tasks.png",
         "activeIcon": "image/toolbar/tasks_active.png",
         "name": "事 项"
@@ -46,7 +47,7 @@
         "name": "迭 代"
       },
       {
-        "pagePath": "page/line/index",
+        "pagePath": "page/project/stat/index",
         "icon": "image/toolbar/document.png",
         "activeIcon": "image/toolbar/document_active.png",
         "name": "统 计"

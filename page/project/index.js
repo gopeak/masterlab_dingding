@@ -88,28 +88,24 @@ Page({
       selectedNav: 0,
       listData: [
         {
-          nav: 'APP项目',
+          nav: 'Masterlab-Dev',
           selectedItem: '',
           data: [
             {
               thumb: 'https://zos.alipayobjects.com/rmsportal/NTuILTPhmSpJdydEVwoO.png',
-              title: '标题文字1'
+              title: '项目1'
             },
             {
               thumb: 'https://zos.alipayobjects.com/rmsportal/NTuILTPhmSpJdydEVwoO.png',
-              title: '标题图片',
+              title: '项目2',
             },
             {
               thumb: 'https://zos.alipayobjects.com/rmsportal/NTuILTPhmSpJdydEVwoO.png',
-              title: '标题文字',
+              title: '项目3',
             },
             {
               thumb: 'https://zos.alipayobjects.com/rmsportal/NTuILTPhmSpJdydEVwoO.png',
-              title: '标题文字',
-            },
-            {
-              thumb: 'https://zos.alipayobjects.com/rmsportal/NTuILTPhmSpJdydEVwoO.png',
-              title: '标题文字',
+              title: '项目4',
             },
           ]
         },

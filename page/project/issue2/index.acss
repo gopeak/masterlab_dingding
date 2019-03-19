@@ -1,3 +1,32 @@
+
+.project-text{
+  vertical-align: middle;
+  margin-left: 5px;
+}
+.project-icon{
+  vertical-align: middle;
+  width: 36rpx;
+  height: 36rpx;
+  margin-left: 10rpx;
+}
+
+.icon-project-select{
+ 
+  margin-right: 10rpx;
+}
+
+
+.a-list-item-icon{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.a-list-item-prority{
+  color: crimson;
+}
+
+
 .a-dropdown-wrapper {
     position: relative;
     display: flex;
@@ -23,7 +52,7 @@
 
 .a-dropdown-nav-item {
     flex: 1;
-    text-align: center;
+    text-align: left;
     height: 100rpx;
     line-height: 100rpx;
 }
@@ -154,6 +183,50 @@
     visibility: visible;
 }
 
+.a-dropdown-placeholder {
+    min-height: 150rpx;
+    z-index: 1;
+    flex: 1;
+}
+
+.a-dropdown-bg {
+    opacity: 0;
+    transition: opacity linear 0.1s;
+}
+
+.expand .a-dropdown-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    opacity: 0.4;
+    z-index: 1;
+}
+
+.project-text{
+  vertical-align: middle;
+  margin-left: 5px;
+}
+.project-icon{
+  vertical-align: middle;
+  width: 36rpx;
+  height: 36rpx;
+  margin-left: 10rpx;
+}
+
+.icon-project-select{
+ 
+  margin-right: 10rpx;
+}
+
+
+.a-list-item-icon{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
 .a-dropdown-placeholder {
     min-height: 150rpx;
     z-index: 1;

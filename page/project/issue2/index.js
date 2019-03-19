@@ -9,7 +9,7 @@ Page({
       selectedNav: 0,
       listData: [
         {
-          nav: '项目1',
+          nav: 'Masterlab-Dev',
           selectedItem: '',
           data: [
             {
@@ -26,42 +26,7 @@ Page({
             },
           ]
         },
-        {
-          nav: '优先级',
-          selectedItem: '',
-          data: [
-            {
-              title: '紧急'
-            },
-            {
-              title: '高',
-            },
-            {
-              title: '一般',
-            },
-            {
-              title: '低',
-            },
-          ]
-        },
-        {
-          nav: '迭代',
-          selectedItem: '',
-          data: [
-            {
-              thumb: 'https://zos.alipayobjects.com/rmsportal/NTuILTPhmSpJdydEVwoO.png',
-              title: '第一次迭代'
-            },
-            {
-              thumb: 'https://zos.alipayobjects.com/rmsportal/NTuILTPhmSpJdydEVwoO.png',
-              title: '第二次迭代',
-            },
-            {
-              thumb: 'https://zos.alipayobjects.com/rmsportal/NTuILTPhmSpJdydEVwoO.png',
-              title: '第三次迭代',
-            },
-          ]
-        },
+        
       ],
     },
     selectedLables: '已解决',

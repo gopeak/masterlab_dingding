@@ -1,4 +1,5 @@
 <import src="/util/grid/index.axml"/>
+
 <template name="DropdownSelect">
     <view a:if="{{listData}}" class="a-dropdown-wrapper {{active ? 'expand' : ''}}">
         <view id="a-dropdown-nav" class="a-dropdown-nav">
@@ -80,31 +81,10 @@
     </scroll-view>
 </template>
 
- 
 
-  <view>
-      <template is="DropdownSelect" data={{...dropdownSelectData}} />
-  </view>
- 
-
-  <view>
-      <template is="SprintGrid" data={{...grid}} >
-  </view> 
-  <template name="SprintGrid">
-      <view class="grid">
-          <block a:for="{{list}}">
-              <view
-              style="width:{{100/(columnNum || 4)}}%;padding-top:25%;" 
-              class="grid-item" onTap="handleItemTap"
-              data-index={{index}}>
-                  <view class="grid-item-wrapper">
-                      <text class="grid-header" >{{item.header}}</text>
-                      <text class="grid-text" style="color:{{item.color}}">{{item.text}}</text>
-                  </view>
-              </view>
-          </block>
-      </view>
-  </template>
+<view>
+    <template is="DropdownSelect" data={{...dropdownSelectData}} />
+</view>
 
 
 <view class="a-list">
