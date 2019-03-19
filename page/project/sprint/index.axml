@@ -1,0 +1,113 @@
+
+<template name="DropdownSelect">
+    <view a:if="{{listData}}" class="a-dropdown-wrapper {{active ? 'expand' : ''}}">
+        <view id="a-dropdown-nav" class="a-dropdown-nav">
+            <block a:for={{listData}}>
+                <view 
+                    class="a-dropdown-nav-item {{ active && selectedNav ===index ? 'active' : ''}}"
+                    hover-class="a-dropdown-nav-item-hover"
+                    onTap="_onNavItemTap"
+                    data-index={{index}}
+                >
+                    <view  style="float:left;margin-left:20rpx;">{{item.nav}}
+                      <view  style="vertical-align:middle" class="triangle"></view>
+                      </view>
+                    
+                </view>
+            </block>
+        </view>
+
+        <scroll-view scroll-y="{{true}}" class="a-dropdown-contents">
+            <block a:for={{listData}} a:for-item="list" a:for-index="parentIndex">
+                <view hidden="{{selectedNav !== parentIndex}}">
+                    <view class="a-dropdown-list-items {{active? 'show' : ''}}">
+                        <block a:for={{list.data}} >
+                            <view
+                                class="a-dropdown-list-item {{index !== (list.data.length - 1) ? '': 'last'}} {{index === list.selectedItem ? 'selected': ''}}"
+                                hover-class="a-dropdown-list-item-hover"
+                                onTap="{{list.onListItemTap || '_onListItemTap'}}"
+                                catchTap="{{list.onListItemTap || '_catchListItemTap'}}"
+                                data-index={{index}}
+                                data-parentIndex={{parentIndex}}
+                                data-title={{item.title}}
+                            >
+                                <view class="a-dropdown-list-item-line {{item.textMode ? 'a-dropdown-list-item-line-' + item.textMode : ''}}">
+                                    <image a:if={{item.thumb}} class="a-dropdown-list-item-thumb" src="{{item.thumb}}" mode="scaleToFill" />
+                                    <text class="a-dropdown-list-item-content">{{item.title}}</text>
+                                    <view a:if={{item.extra}} class="a-dropdown-list-item-extra" >{{item.extra}}</view>
+                                    <view class="a-dropdown-list-item-check"/>
+                                    <view class="a-dropdown-list-item-bottom" />
+                                </view>
+                            </view>
+                        </block>
+                    </view>
+                </view>
+            </block>
+        </scroll-view>
+
+        <view class="a-dropdown-placeholder"></view>
+        <view class="a-dropdown-bg" onTap="_catchBgTap"></view>
+    </view>
+</template>
+
+<template name="List">
+    <scroll-view scroll-y>
+        <view>
+            <view class="a-list">
+                <block a:if={{header}}>
+                    <view class="a-list-header">{{header}}</view>
+                </block>
+                <view a:if={{data}} class="a-list-items">
+                    <block a:for={{data}}>
+                        <view 
+                            class="a-list-item {{index !== (data.length - 1) ? '': 'last'}} am-list-item-{{item.align || 'middle'}}"
+                            hover-class="a-list-item-hover"
+                            onTap="{{onItemTap}}"
+                            data-index={{index}}
+                        >
+                            <view class="a-list-item-line {{item.textMode ? 'a-list-item-line-' + item.textMode : ''}}">
+                                <image style="width:32rpx;height:32rpx" a:if={{item.thumb}} class="a-list-item-thumb" src="{{item.thumb}}" mode="scaleToFill" />
+                                <text style="font-size:26rpx" class="a-list-item-content">{{item.title}}</text>
+                                <view style="font-size:24rpx" a:if={{item.extra}} class="a-list-item-extra" >{{item.extra}}</view>
+                                <view a:if={{item.arrow}} class="a-list-arrow a-list-arrow-{{item.arrow}}" />
+                                <view class="a-list-item-bottom" />
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</template>
+
+ 
+
+  <view>
+      <template is="DropdownSelect" data={{...dropdownSelectData}} />
+  </view>
+ 
+ 
+    <view class="sprint-timelimit-section">
+    <view class="sprint-timelimit-div" >
+      <text class="text-time-text">时间：3.21--3.30</text>
+    </view>
+  </view>
+
+  <view class="sprint-timelimit-section">
+    <view class="sprint-timelimit-div" >
+      <text class="text-time-text">倒计时: 10天 20时 20分</text>
+    </view>
+  </view>
+  <view>
+
+<view class="a-list">
+  <view class="a-list-header">燃尽图</view> 
+</view>
+
+ <view class="container" style="width:{{width}}px;height:{{height}}px;">
+  <dd-charts canvasId="ddchart-dom-bar" onDraw="onDraw"></dd-charts>
+</view>
+
+<view>
+    <template is="List" data={{...listData}}>
+</view>

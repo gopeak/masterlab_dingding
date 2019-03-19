@@ -1,6 +1,7 @@
 {
   "pages": [
-    "page/project/index",
+    "page/project/issue2/index",
+    "page/project/workbench/index",
     "page/biz/index",
     "page/biz/pages/collapse/index",
     "page/biz/pages/dropdown/index",
@@ -8,9 +9,10 @@
     "page/biz/pages/grid/index",
     "page/biz/pages/list/index",
     "page/project/list/index",
-    "page/project/workbench/index",
     "page/project/issue/index",
-    "page/biz/pages/tag/index"
+    "page/project/sprint/index",
+    "page/biz/pages/tag/index",
+    "page/line/index"
   ],
   "window": {
     "enableWK": "YES",
@@ -26,7 +28,7 @@
     "backgroundColor": "#F5F5F9",
     "items": [
       {
-        "pagePath": "page/project/index",
+        "pagePath": "page/project/issue2/index",
         "icon": "image/toolbar/index.png",
         "activeIcon": "image/toolbar/index_active.png",
         "name": "首 页"
@@ -38,19 +40,19 @@
         "name": "事 项"
       },
       {
-        "pagePath": "page/project/workbench/index",
+        "pagePath": "page/project/sprint/index",
         "icon": "image/toolbar/rocket.png",
         "activeIcon": "image/toolbar/rocket_active.png",
         "name": "迭 代"
       },
       {
-        "pagePath": "page/biz/pages/list/index",
+        "pagePath": "page/line/index",
         "icon": "image/toolbar/document.png",
         "activeIcon": "image/toolbar/document_active.png",
-        "name": "文 档"
+        "name": "统 计"
       },
       {
-        "pagePath": "page/biz/pages/tag/index",
+        "pagePath": "page/biz/index",
         "icon": "image/toolbar/more2.png",
         "activeIcon": "image/toolbar/more2_active.png",
         "name": "更 多"

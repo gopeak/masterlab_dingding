@@ -1,0 +1,32 @@
+@import '/page/biz/components/dropdown/index.acss';
+@import '/page/biz/components/list/index.acss';
+
+.page {
+  padding: 0;
+}
+
+ 
+
+.sprint-timelimit-section {
+  background: #fff;
+  margin-bottom: 4rpx;
+}
+
+
+.sprint-timelimit-div {
+  padding: 32rpx;
+}
+
+.text-demo-title {
+
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+}
+
+.text-demo-text {
+  font-size: 30rpx;
+}
+
+.text-time-text {
+  font-size: 32rpx;
+}
