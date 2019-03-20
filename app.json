@@ -10,7 +10,6 @@
     "page/biz/pages/grid/index",
     "page/biz/pages/list/index",
     "page/project/list/index",
-    "page/project/issue/index",
     "page/project/sprint/index",
     "page/project/stat/index",
     "page/biz/pages/tag/index"
@@ -48,8 +47,8 @@
       },
       {
         "pagePath": "page/project/stat/index",
-        "icon": "image/toolbar/document.png",
-        "activeIcon": "image/toolbar/document_active.png",
+        "icon": "image/toolbar/stat.png",
+        "activeIcon": "image/toolbar/stat_active.png",
         "name": "统 计"
       },
       {

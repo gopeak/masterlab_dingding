@@ -1,55 +1,5 @@
 <import src="/util/grid/index.axml"/>
 
-<template name="DropdownSelect">
-    <view a:if="{{listData}}" class="a-dropdown-wrapper {{active ? 'expand' : ''}}">
-        <view id="a-dropdown-nav" class="a-dropdown-nav">
-            <block a:for={{listData}}>
-                <view 
-                    class="a-dropdown-nav-item {{ active && selectedNav ===index ? 'active' : ''}}"
-                    hover-class="a-dropdown-nav-item-hover"
-                    onTap="_onNavItemTap"
-                    data-index={{index}}
-                >
-                    <view  style="float:left;margin-left:20rpx;">{{item.nav}}
-                      <view  style="vertical-align:middle" class="triangle"></view>
-                      </view>
-                    
-                </view>
-            </block>
-        </view>
-
-        <scroll-view scroll-y="{{true}}" class="a-dropdown-contents">
-            <block a:for={{listData}} a:for-item="list" a:for-index="parentIndex">
-                <view hidden="{{selectedNav !== parentIndex}}">
-                    <view class="a-dropdown-list-items {{active? 'show' : ''}}">
-                        <block a:for={{list.data}} >
-                            <view
-                                class="a-dropdown-list-item {{index !== (list.data.length - 1) ? '': 'last'}} {{index === list.selectedItem ? 'selected': ''}}"
-                                hover-class="a-dropdown-list-item-hover"
-                                onTap="{{list.onListItemTap || '_onListItemTap'}}"
-                                catchTap="{{list.onListItemTap || '_catchListItemTap'}}"
-                                data-index={{index}}
-                                data-parentIndex={{parentIndex}}
-                                data-title={{item.title}}
-                            >
-                                <view class="a-dropdown-list-item-line {{item.textMode ? 'a-dropdown-list-item-line-' + item.textMode : ''}}">
-                                    <image a:if={{item.thumb}} class="a-dropdown-list-item-thumb" src="{{item.thumb}}" mode="scaleToFill" />
-                                    <text class="a-dropdown-list-item-content">{{item.title}}</text>
-                                    <view a:if={{item.extra}} class="a-dropdown-list-item-extra" >{{item.extra}}</view>
-                                    <view class="a-dropdown-list-item-check"/>
-                                    <view class="a-dropdown-list-item-bottom" />
-                                </view>
-                            </view>
-                        </block>
-                    </view>
-                </view>
-            </block>
-        </scroll-view>
-
-        <view class="a-dropdown-placeholder"></view>
-        <view class="a-dropdown-bg" onTap="_catchBgTap"></view>
-    </view>
-</template>
 
 <template name="List">
     <scroll-view scroll-y>
@@ -68,9 +18,9 @@
                         >
                             <view class="a-list-item-line {{item.textMode ? 'a-list-item-line-' + item.textMode : ''}}">
                                 <image style="width:32rpx;height:32rpx" a:if={{item.thumb}} class="a-list-item-thumb" src="{{item.thumb}}" mode="scaleToFill" />
-                                <text style="font-size:26rpx" class="a-list-item-content">{{item.title}}</text>
-                                <view style="font-size:24rpx" a:if={{item.extra}} class="a-list-item-extra" >{{item.extra}}</view>
-                                <view a:if={{item.arrow}} class="a-list-arrow a-list-arrow-{{item.arrow}}" />
+                                <text style="font-size:26rpx" class="a-list-item-content">{{item.assignee}}</text>
+                                <view style="font-size:24rpx" class="a-list-item-extra" >{{item.count}}</view>
+                                <view style="margin-left:20px;font-size:20rpx" class="a-list-item-extra" ><progress percent="{{item.rate}}" show-info/></view>
                                 <view class="a-list-item-bottom" />
                             </view>
                         </view>
@@ -82,9 +32,15 @@
 </template>
 
 
-<view>
-    <template is="DropdownSelect" data={{...dropdownSelectData}} />
-</view>
+ 
+  <view class="tab-section">
+    <view  class="tab-section-btns">
+      <view class="tab_active" >进行中迭代</view>
+      <view  style="color:gray">当前项目</view>
+    </view>
+  </view>
+ 
+ 
 
 
 <view class="a-list">
@@ -97,4 +53,12 @@
 
 <view>
     <template is="List" data={{...listData}}>
+</view>
+
+
+<view class="a-list">
+  <view class="a-list-header">状态分布图</view> 
+</view>
+<view class="container" style="width:{{width}}px;height:{{height}}px;">
+  <dd-charts canvasId="pie_chart" onDraw="onPieDraw"></dd-charts>
 </view>

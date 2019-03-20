@@ -1,3 +1,24 @@
+.a-dropdown-wrapper.expand {
+    position: fixed;
+    height: 100%;
+    z-index: 99;
+}
+
+.a-dropdown-nav {
+    display: flex;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+    min-height: 100rpx;
+    z-index: 99;
+}
+
+.a-dropdown-nav-item {
+    flex: 1;
+    text-align: left;
+    height: 100rpx;
+    line-height: 100rpx;
+}
 
 .project-text{
   vertical-align: middle;

@@ -1,26 +1,6 @@
 import list from '/page/biz/components/list';
 import Dropdown from '/page/biz/components/dropdown';
 const chartDataNew = [
-    { date: "2017-06-05", value: 116 },
-    { date: "2017-06-06", value: 129 },
-    { date: "2017-06-07", value: 135 },
-    { date: "2017-06-08", value: 86 },
-    { date: "2017-06-09", value: 73 },
-    { date: "2017-06-10", value: 85 },
-    { date: "2017-06-11", value: 73 },
-    { date: "2017-06-12", value: 68 },
-    { date: "2017-06-13", value: 92 },
-    { date: "2017-06-14", value: 130 },
-    { date: "2017-06-15", value: 245 },
-    { date: "2017-06-16", value: 139 },
-    { date: "2017-06-17", value: 115 },
-    { date: "2017-06-18", value: 111 },
-    { date: "2017-06-19", value: 309 },
-    { date: "2017-06-20", value: 206 },
-    { date: "2017-06-21", value: 137 },
-    { date: "2017-06-22", value: 128 },
-    { date: "2017-06-23", value: 85 },
-    { date: "2017-06-24", value: 94 },
     { date: "2017-06-25", value: 71 },
     { date: "2017-06-26", value: 106 },
     { date: "2017-06-27", value: 84 },
@@ -52,6 +32,41 @@ const chartDataNew = [
     { date: "2017-07-23", value: 55 },
     { date: "2017-07-24", value: 60 }
   ]
+
+  const map = {
+  '待处理': '40%',
+  '进行中': '20%',
+  '已完成': '18%',
+  '逾期': '15%',
+  '已关闭': '5%',
+  '其他': '2%'
+}
+
+const pieChartDataNew = [{
+  name: '待处理',
+  percent: 0.4,
+  a: '1'
+}, {
+  name: '进行中',
+  percent: 0.2,
+  a: '1'
+}, {
+  name: '已完成',
+  percent: 0.18,
+  a: '1'
+}, {
+  name: '逾期',
+  percent: 0.15,
+  a: '1'
+}, {
+  name: '已关闭',
+  percent: 0.05,
+  a: '1'
+}, {
+  name: '其他',
+  percent: 0.02,
+  a: '1'
+}]
 
 let app = getApp()
 Page({
@@ -108,31 +123,31 @@ Page({
     },
     listData: {
       onItemTap: 'handleListItemTap',
-      header: '事 项',
+      header: '负责人统计',
       data: [
         {
-          thumb: '/image/icon/issue_type/new.png',
-          title: '数据库设计',
-          arrow: 'horizontal',
-          extra: 'sven'
+          thumb: '/image/avatar/avatar.png',
+          count: '12',
+          rate: '30',
+          assignee: 'sven'
         },
         {
-          thumb: '/image/icon/issue_type/new.png',
-          title: '产品PRD功能说明书',
-          arrow: 'horizontal',
-          extra: '松青'
+          thumb: '/image/avatar/girl.png',
+          count: '10',
+          rate: '25',
+          assignee: '松青'
         },
         {
-          thumb: '/image/icon/issue_type/task.png',
-          title: '技术架构设计',
-          arrow: 'horizontal',
-          extra: '赵龙'
+          thumb: '/image/avatar/boy.png',
+          count: '8',
+          rate: '20',
+          assignee: '赵龙'
         },
         {
-          thumb: '/image/icon/issue_type/bug.png',
-          title: '关于业务逻辑的bug',
-          arrow: 'horizontal',
-          extra: '李健'
+          thumb: '/image/avatar/boy.png',
+          count: '10',
+          rate: '25',
+          assignee: '李健'
         }
       ]
     },
@@ -184,6 +199,42 @@ Page({
         });
         ddChart.line().position('date*value');
         ddChart.render()
+    },
+    onPieDraw(ddChart){
+        //dd-charts组件内部会回调此方法，返回图表实例ddChart
+        //提示：可以把异步获取数据及渲染图表逻辑放onDraw回调里面
+        ddChart.clear()
+        ddChart.source(pieChartDataNew, {
+          percent: {
+            formatter: function formatter(val) {
+              return val * 100 + '%';
+            }
+          }
+        })
+        ddChart.legend({
+          position: 'right',
+          itemFormatter: function itemFormatter(val) {
+            return val + '  ' + map[val];
+          }
+        })
+        ddChart.tooltip(false)
+        ddChart.coord('polar', {
+          transposed: true,
+          radius: 0.85
+        })
+        ddChart.axis(false);
+        ddChart.interval().position('a*percent').color('name', ['#1890FF', '#13C2C2', '#2FC25B', '#FACC14', '#F04864', '#8543E0']).adjust('stack').style({
+          lineWidth: 1,
+          stroke: '#fff',
+          lineJoin: 'round',
+          lineCap: 'round'
+        }).animate({
+          appear: {
+            duration: 1200,
+            easing: 'bounceOut'
+          }
+        })
+        ddChart.render();
     },
   onDropdownNavItemTap(e, index) {
     const { selectedNav, active } = this.data.dropdownSelectData;
