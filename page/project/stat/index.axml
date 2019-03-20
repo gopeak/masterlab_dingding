@@ -40,14 +40,12 @@
     </view>
   </view>
  
- 
-
 
 <view class="a-list">
   <view class="a-list-header">燃尽图</view> 
 </view>
 
- <view class="container" style="width:{{width}}px;height:{{height}}px;">
+ <view class="container" style="width:{{width_line}}px;height:height:{{height_line}}px;">
   <dd-charts canvasId="ddchart-dom-bar" onDraw="onDraw"></dd-charts>
 </view>
 
@@ -59,6 +57,6 @@
 <view class="a-list">
   <view class="a-list-header">状态分布图</view> 
 </view>
-<view class="container" style="width:{{width}}px;height:{{height}}px;">
+<view class="container" style="width:{{width_pie}}px;height:{{height_pie}}px;">
   <dd-charts canvasId="pie_chart" onDraw="onPieDraw"></dd-charts>
 </view>

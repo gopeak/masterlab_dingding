@@ -1,0 +1,37 @@
+<template name="Grid">
+    <view class="grid">
+        <block a:for="{{list}}">
+            <view
+            style="width:{{100/(columnNum || 4)}}%;padding-top:{{100/(columnNum || 4)}}%;" 
+            class="grid-item" onTap="handleItemTap"
+            data-index={{index}}>
+                <view class="grid-item-wrapper"> 
+                    <image a:if={{item.icon}} class="grid-icon" src="{{item.icon}}" mode="scaleToFill" />
+                    <text class="grid-text">{{item.text}}</text>
+                </view>
+            </view>
+        </block>
+    </view>
+</template>
+
+ 
+<view class="a-list">
+  <view class="a-list-header">项 目 管 理</view> 
+</view>
+<view>
+    <template is="Grid" data={{...projectOpts}} >
+</view>
+
+<view class="a-list">
+  <view class="a-list-header">项 目 设 置</view> 
+</view>
+<view>
+    <template is="Grid" data={{...curProjectSetting}} >
+</view>
+
+<view class="a-list">
+  <view class="a-list-header">个 人 设 置</view> 
+</view>
+<view>
+    <template is="Grid" data={{...personSetting}} >
+</view>

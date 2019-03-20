@@ -34,52 +34,54 @@ const chartDataNew = [
   ]
 
   const map = {
-  '待处理': '40%',
-  '进行中': '20%',
-  '已完成': '18%',
-  '逾期': '15%',
-  '已关闭': '5%',
-  '其他': '2%'
-}
+    '待处理': '40%',
+    '进行中': '20%',
+    '已完成': '18%',
+    '逾期': '15%',
+    '已关闭': '5%',
+    '其他': '2%'
+  }
 
 const pieChartDataNew = [{
-  name: '待处理',
-  percent: 0.4,
-  a: '1'
-}, {
-  name: '进行中',
-  percent: 0.2,
-  a: '1'
-}, {
-  name: '已完成',
-  percent: 0.18,
-  a: '1'
-}, {
-  name: '逾期',
-  percent: 0.15,
-  a: '1'
-}, {
-  name: '已关闭',
-  percent: 0.05,
-  a: '1'
-}, {
-  name: '其他',
-  percent: 0.02,
-  a: '1'
-}]
+          name: '待处理',
+          percent: 0.4,
+          a: '1'
+        }, {
+          name: '进行中',
+          percent: 0.2,
+          a: '1'
+        }, {
+          name: '已完成',
+          percent: 0.18,
+          a: '1'
+        }, {
+          name: '逾期',
+          percent: 0.15,
+          a: '1'
+        }, {
+          name: '已关闭',
+          percent: 0.05,
+          a: '1'
+        }, {
+          name: '其他',
+          percent: 0.02,
+          a: '1'
+        }]
 
 let app = getApp()
 Page({
   ... Dropdown,
   ...list,
   data: {
-    width:200,
-       height:200,
+       width_line:400,
+       heigh_linet:400,
+       width_pie:200,
+       heigh_pie:200,
        chart: null,
-     dropdownSelectData: {
-      active: false,
-      selectedNav: 0,
-      listData: [
+       dropdownSelectData: {
+       active: false,
+       selectedNav: 0,
+       listData: [
         {
           nav: '第一次迭代',
           selectedItem: '',
@@ -99,7 +101,7 @@ Page({
     },
     
     grid: {
-            list: [
+        list: [
                 {
                     "color": "coral",
                     "header": "时间",
@@ -113,61 +115,63 @@ Page({
             ],
             columnNum: 2
         },
-    handleItemTap(e) {
-        dd.showToast({
-          content: `第${e.currentTarget.dataset.index}个Item`,
-          success: (res) => {
-            
-          },
-        });
-    },
-    listData: {
-      onItemTap: 'handleListItemTap',
-      header: '负责人统计',
-      data: [
-        {
-          thumb: '/image/avatar/avatar.png',
-          count: '12',
-          rate: '30',
-          assignee: 'sven'
+        handleItemTap(e) {
+            dd.showToast({
+              content: `第${e.currentTarget.dataset.index}个Item`,
+              success: (res) => {
+                
+              },
+            });
         },
-        {
-          thumb: '/image/avatar/girl.png',
-          count: '10',
-          rate: '25',
-          assignee: '松青'
+        listData: {
+          onItemTap: 'handleListItemTap',
+          header: '负责人统计',
+          data: [
+            {
+              thumb: '/image/avatar/avatar.png',
+              count: '12',
+              rate: '30',
+              assignee: 'sven'
+            },
+            {
+              thumb: '/image/avatar/girl.png',
+              count: '10',
+              rate: '25',
+              assignee: '松青'
+            },
+            {
+              thumb: '/image/avatar/boy.png',
+              count: '8',
+              rate: '20',
+              assignee: '赵龙'
+            },
+            {
+              thumb: '/image/avatar/boy.png',
+              count: '10',
+              rate: '25',
+              assignee: '李健'
+            }
+          ]
         },
-        {
-          thumb: '/image/avatar/boy.png',
-          count: '8',
-          rate: '20',
-          assignee: '赵龙'
-        },
-        {
-          thumb: '/image/avatar/boy.png',
-          count: '10',
-          rate: '25',
-          assignee: '李健'
-        }
-      ]
-    },
-  },
+      },
   
     onLoad(){
         let sysInfo = app.globalData.sysInfo
         this.setData({
-            width: sysInfo.screenWidth,
-            height: sysInfo.screenHeight,
+            width_pie: sysInfo.screenWidth,
+            height_pie: sysInfo.screenHeight,
+            width_line: sysInfo.screenWidth,
+            height_line: sysInfo.screenHeight,
         })
     },
     onReady(){
        
     },
-    onDraw(ddChart){
+    onDraw(lineChart){
         //dd-charts组件内部会回调此方法，返回图表实例ddChart
         //提示：可以把异步获取数据及渲染图表逻辑放onDraw回调里面
-        ddChart.clear()
-        ddChart.source(chartDataNew, {
+        lineChart.clear()
+        lineChart.source(chartDataNew, {
             value: {
               tickCount: 5,
               min: 0
@@ -178,14 +182,14 @@ Page({
               tickCount: 3
             }
         })
-        ddChart.tooltip({
+        lineChart.tooltip({
           showItemMarker: false,
           onShow(ev) {
             const { items } = ev;
             items[0].name = items[0].title;
           }
         })
-        ddChart.axis('date', {
+        lineChart.axis('date', {
             label(text, index, total) {
             const textCfg = {};
             if (index === 0) {
@@ -197,33 +201,33 @@ Page({
             return textCfg;
             }
         });
-        ddChart.line().position('date*value');
-        ddChart.render()
+        lineChart.line().position('date*value');
+        lineChart.render()
     },
-    onPieDraw(ddChart){
+    onPieDraw(pieChart){
         //dd-charts组件内部会回调此方法，返回图表实例ddChart
         //提示：可以把异步获取数据及渲染图表逻辑放onDraw回调里面
-        ddChart.clear()
-        ddChart.source(pieChartDataNew, {
+        pieChart.clear()
+        pieChart.source(pieChartDataNew, {
           percent: {
             formatter: function formatter(val) {
               return val * 100 + '%';
             }
           }
         })
-        ddChart.legend({
+        pieChart.legend({
           position: 'right',
           itemFormatter: function itemFormatter(val) {
             return val + '  ' + map[val];
           }
         })
-        ddChart.tooltip(false)
-        ddChart.coord('polar', {
+        pieChart.tooltip(false)
+        pieChart.coord('polar', {
           transposed: true,
           radius: 0.85
         })
-        ddChart.axis(false);
-        ddChart.interval().position('a*percent').color('name', ['#1890FF', '#13C2C2', '#2FC25B', '#FACC14', '#F04864', '#8543E0']).adjust('stack').style({
+        pieChart.axis(false);
+        pieChart.interval().position('a*percent').color('name', ['#1890FF', '#13C2C2', '#2FC25B', '#FACC14', '#F04864', '#8543E0']).adjust('stack').style({
           lineWidth: 1,
           stroke: '#fff',
           lineJoin: 'round',
@@ -234,7 +238,7 @@ Page({
             easing: 'bounceOut'
           }
         })
-        ddChart.render();
+        pieChart.render();
     },
   onDropdownNavItemTap(e, index) {
     const { selectedNav, active } = this.data.dropdownSelectData;
