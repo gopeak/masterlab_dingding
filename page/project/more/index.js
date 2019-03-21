@@ -10,16 +10,16 @@ Page({
           projectOpts: {
             list: [
                 {
-                    "icon": "image/icon/more/hover.png",
+                    "icon": "/image/icon/more/hover.png",
                     "text": "切换项目"
                 },
                 {
-                    "icon": "image/icon/more/new.png",
+                    "icon": "/image/icon/more/new.png",
                     "text": "新增项目"
                 },
                 {
-                    "icon": "image/icon/more/manager.png",
-                    "text": "管理项目"
+                    "icon": "/image/icon/more/manager.png",
+                    "text": "全部项目"
                 },
                 {
                     "icon": "",
@@ -31,19 +31,19 @@ Page({
         curProjectSetting: {
             list: [
                 {
-                    "icon": "image/icon/more/info.png",
+                    "icon": "/image/icon/more/info.png",
                     "text": "基本信息"
                 },
                 {
-                    "icon": "image/icon/more/module.png",
+                    "icon": "/image/icon/more/module.png",
                     "text": "模 块"
                 },
                 {
-                    "icon": "image/toolbar/rocket_active.png",
+                    "icon": "/image/toolbar/rocket_active.png",
                     "text": "迭 代"
                 },
                 {
-                    "icon": "image/icon/more/tag.png",
+                    "icon": "/image/icon/more/tag.png",
                     "text": "版 本"
                 }
             ],
@@ -52,15 +52,15 @@ Page({
         personSetting: {
             list: [
                 {
-                    "icon": "image/icon/more/index_setting.png",
+                    "icon": "/image/icon/more/index_setting.png",
                     "text": "首页设置"
                 },
                 {
-                    "icon": "image/icon/more/chart_setting.png",
+                    "icon": "/image/icon/more/chart_setting.png",
                     "text": "统计设置"
                 },
                 {
-                    "icon": "image/icon/more/filter.png",
+                    "icon": "/image/icon/more/filter.png",
                     "text": "自定义过滤器"
                 },
                 {

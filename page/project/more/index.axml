@@ -6,7 +6,8 @@
             class="grid-item" onTap="handleItemTap"
             data-index={{index}}>
                 <view class="grid-item-wrapper"> 
-                    <image a:if={{item.icon}} class="grid-icon" src="{{item.icon}}" mode="scaleToFill" />
+                    <image   class="grid-icon" src="{{item.icon}}" mode="aspectFit" />
+                 
                     <text class="grid-text">{{item.text}}</text>
                 </view>
             </view>
@@ -23,7 +24,7 @@
 </view>
 
 <view class="a-list">
-  <view class="a-list-header">项 目 设 置</view> 
+  <view class="a-list-header">当 前 项 目</view> 
 </view>
 <view>
     <template is="Grid" data={{...curProjectSetting}} >
