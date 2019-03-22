@@ -62,7 +62,7 @@
       <view class="grid">
           <block a:for="{{list}}">
               <view
-              style="width:{{100/(columnNum || 4)}}%;padding-top:{{100/(columnNum || 4)}}%;" 
+              style="width:{{100/(columnNum || 4)}}%;" 
               class="grid-item" onTap="handleItemTap"
               data-index={{index}}>
                   <view class="grid-item-wrapper">
@@ -112,67 +112,107 @@
     <view>
         <view class="a-list">
 
-          <view class="a-list-header">动 态</view>
+          <view class="a-list-header">动 态 <text class="iconfont icon-more"></text></view>
       
           <view class="page-section">
-            <view class="page-section-demo">
-              <view class="stream">
-                <view class="post">
-                  <view class="postUser">
-                    <view class="postUser__name"><image class="a-list-item-icon" src="/image/avatar/girl.png" />Chris</view>
-                  </view>
-                  <view class="postBody">
-                    <view class="postBody__content">
-                      欢迎使用钉钉小程序！！！
-                    </view>
-                    <view class="postBody__date">
-                      May 20
-                    </view>
-                  </view>
+            <view class="active-list">
+              <view class="date-item">
+                <view class="date-item-bar">
+                  <text class="date-info">May 21</text>
+
+                  <text class="pro-name">masterlab</text>
                 </view>
 
-                <view class="post">
-                  <view class="postUser">
-                    <view class="postUser__name"><image class="a-list-item-icon" src="/image/avatar/boy.png" />Jack</view>
+                <view class="active-item">
+                  <view class="active-item-avatar"><image class="a-list-item-icon" src="/image/avatar/boy.png" /></view>
+
+                  <view class="active-item-user">
+                    Jack
+                    <text class="active-item-time">16:00</text>
                   </view>
-                  <view class="postBody">
-                    <view class="postBody__content">
-                      @Chris 我该如何上手？
-                    </view>
-                    <view class="postBody__date">
-                      May 21
-                    </view>
+
+                  <view class="active-item-content">
+                    创建了任务
+                  </view>
+
+                  <view class="active-item-pro">
+                    项目 <text class="active-pro-name">Masterlab-dev</text>
                   </view>
                 </view>
-
-                <view class="post">
-                  <view class="postUser">
-                    <view class="postUser__name"><image class="a-list-item-icon" src="/image/avatar/girl.png" />Chris</view>
-                  </view>
-                  <view class="postBody">
-                    <view class="postBody__content">
-                      你可以查看 Demo，对小程序有一个简单的了解；然后下载我们的 IDE 进行开发。
-                    </view>
-                    <view class="postBody__date">
-                      May 22
-                    </view>
-                  </view>
-                </view> 
-
-                <view class="post" >
-                  <view class="postUser">
-                    <view class="postUser__name"><image class="a-list-item-icon" src="/image/avatar/avatar.png" />Jessie</view>
-                  </view>
-                  <view class="postBody">
-                    <view class="postBody__content">
-                      赞! +1
-                    </view>
-                    <view class="postBody__date">
-                      June 1
-                    </view>
-                  </view>
-                </view>
+                
               </view>
+
+              <view class="date-item">
+                <view class="date-item-bar">
+                  <text class="date-info">May 21</text>
+
+                  <text class="pro-name">masterlab</text>
+                </view>
+
+                <view class="active-item">
+                  <view class="active-item-avatar"><image class="a-list-item-icon" src="/image/avatar/girl.png" /></view>
+
+                  <view class="active-item-user">
+                    Jack
+                    <text class="active-item-time">16:00</text>
+                  </view>
+
+                  <view class="active-item-content">
+                    创建了任务
+                  </view>
+
+                  <view class="active-item-pro">
+                    项目 <text class="active-pro-name">Masterlab-dev</text>
+                  </view>
+                </view>
+
+
+                 <view class="active-item">
+                  <view class="active-item-avatar"><image class="a-list-item-icon" src="/image/avatar/boy.png" /></view>
+
+                  <view class="active-item-user">
+                    Jelly
+                    <text class="active-item-time">16:00</text>
+                  </view>
+
+                  <view class="active-item-content">
+                    创建了任务
+                  </view>
+
+                  <view class="active-item-pro">
+                    项目 <text class="active-pro-name">Masterlab-dev</text>
+                  </view>
+                </view>
+                
+              </view>
+
+
+              <view class="date-item">
+                <view class="date-item-bar">
+                  <text class="date-info">May 21</text>
+
+                  <text class="pro-name">masterlab</text>
+                </view>
+
+                <view class="active-item">
+                  <view class="active-item-avatar"><image class="a-list-item-icon" src="/image/avatar/boy.png" /></view>
+
+                  <view class="active-item-user">
+                    Jack
+                    <text class="active-item-time">16:00</text>
+                  </view>
+
+                  <view class="active-item-content">
+                    创建了任务
+                  </view>
+
+                  <view class="active-item-pro">
+                    项目 <text class="active-pro-name">Masterlab-dev</text>
+                  </view>
+                </view>
+                
+              </view>
+
             </view>
           </view>
         </view>

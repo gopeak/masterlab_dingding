@@ -1,4 +1,4 @@
-@import "/util/lifecycle.acss";
+@import "/util/iconfont.acss";
 @import '/util/items/index.acss';
 
 @import '/page/biz/components/list/index.acss';
@@ -14,12 +14,10 @@
     position: relative;
     background-color: white;
     position: relative;
+    padding: 25rpx 0;
 }
 
 .grid-item-wrapper {
-    position: absolute;
-    left: 0;
-    top: 0;
     width: 100%;
     height: 100%;
     display: flex;
@@ -259,6 +257,88 @@
   margin-right: 10rpx;
 }
 
+.active-list {
+  padding: 12rpx 5%;
+}
+
+.active-list .date-item-bar {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.date-item .date-info {
+  flex: 1 auto;
+  white-space: nowrap;
+  font-size: 26rpx;
+  line-height: 70rpx;
+  padding-right: 8rpx;
+  color: #666;
+}
+
+.date-item .pro-name {
+  position: absolute;
+  padding-right: 20rpx;
+  right: 0;
+  top: 0;
+  font-size: 22rpx;
+  line-height: 1.8;
+  color: #888;
+}
+
+.active-list .date-item-bar:after {
+  display: block;
+  content: " ";
+  width: 100%;
+  height: 35rpx;
+  border-bottom: 1px solid #ddd;
+}
+
+.active-item {
+  padding-left: 125rpx;
+  position: relative;
+  font-size: 26rpx;
+  line-height: 1.8;
+  margin-bottom: 10rpx;
+  color: #333;
+}
+
+.active-item .active-item-avatar {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  border-radius: 50%;
+  left: 65rpx;
+  top: 2rpx;
+}
+
+.active-item .active-item-user {
+ 
+}
+
+.active-item .active-item-time {
+  margin-left: 20rpx;
+}
+
+.active-item .active-item-pro {
+  font-size: 23rpx;
+  color: #888;
+}
+
+.active-item .active-item-pro .active-pro-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-left: 20rpx;
+}
+
+.a-list-header .iconfont {
+  float: right;
+  padding: 2rpx 3rpx;
+  line-height: 35rpx;
+  text-align: center;
+  font-size: 45rpx;
+}
 
 .a-list-item-icon{
   width: 40rpx;
