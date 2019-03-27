@@ -19,7 +19,7 @@
                   >
                        <image src="/image/logo.png" mode="scaleToFill" class="project-icon"/>
                        <text class="project-text"> {{item.nav}}</text>
-                       <view class="icon-project-select triangle "></view>
+                       <text class="iconfont icon-select "></text>
                   </view>
               </block>
           </view> 

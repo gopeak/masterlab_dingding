@@ -108,10 +108,13 @@
 
 
 <view class="a-list">
-  <view class="a-list-header">燃尽图</view> 
+  <view class="a-list-header">
+    <text class="header-title">燃尽图</text>
+    <text class="iconfont icon-sheet"></text>
+  </view> 
 </view>
 
- <view class="container" style="width:{{width}}px;height:{{height}}px;">
+ <view class="container sheet-box" style="width:{{width}}px;height:{{height}}px;">
   <dd-charts canvasId="ddchart-dom-bar" onDraw="onDraw"></dd-charts>
 </view>
 

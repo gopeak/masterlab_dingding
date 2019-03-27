@@ -17,6 +17,7 @@ const lastComponents = [
 Page({
   ...lifecycle,
   ...animModal.animOp,
+  ...Dropdown,
   data: {
    
     listData: {

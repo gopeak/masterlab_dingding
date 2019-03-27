@@ -1,50 +1,191 @@
 <view>
     <template is="project-DropdownSelect" data={{...dropdownSelectData}} />
 </view>
-<view class="container">
-    <view class="mt-24"><text>数据库设计（表结构 字典 存储过程）</text></view>
-    <view class="tag-list">
-        <image  style="width:40rpx;height:40rpx;floa:left" src="/image/icon/issue_type/new.png" mode="scaleToFill" />
-        <text class="prioirty_text" style="margin-left:10rpx;">高<text>
-     
+
+<view class="issue-list">
+  <view class="issue-item">
+      <view class="issue-status">已解决</view>
+      <view class="issue-title"><text>数据库设计（表结构 字典 存储过程）</text></view>
+      <view class="issue_bottom_text">
+           <view class="issue-info tag-list">
+              <image class="tag-img issue-img" src="/image/icon/issue_type/new.png" />
+              <text class="prioirty_text tag-text">高<text>      
+          </view>
+
+          <view class="issue-info issue-member">
+            <image class="member-img issue-img" src="/image/icon/issue_type/new.png" />
+            <text class="member-name">李健</text>
+          </view>
+
+          <view class="issue-time issue-info">14 13:00</view>
+      </view>
+
+      <view class="issue-action">
+        <text class="iconfont icon-gengduo"></text>
+      </view>
+  </view>
+
+  <view class="issue-item">
+      <view class="issue-status status-open">打开</view>
+      <view class="issue-title"><text>架构设计（数据库 开发语言 服务器）</text></view>
+      <view class="issue_bottom_text">
+           <view class="issue-info tag-list">
+              <image class="tag-img issue-img" src="/image/icon/issue_type/task.png" />
+              <text class="prioirty_text tag-text">中<text>      
+          </view>
+
+          <view class="issue-info issue-member">
+            <image class="member-img issue-img" src="/image/icon/issue_type/new.png" />
+            <text class="member-name">韦朝夺</text>
+          </view>
+
+          <view class="issue-time issue-info">14 13:00</view>
+      </view>
+
+      <view class="issue-action">
+        <text class="iconfont icon-gengduo"></text>
+      </view>
+  </view>
+
+<view class="picker-box" a:if="{{rolesPicker || timePicker}}">
+  <view class="pv-bottom" a:if="{{rolesPicker}}">
+    <view class="picker-btns">
+      <button size="default" type="default" class="btn">取消</button>
+      <button size="default" type="default" class="btn btn-warn" onTap="saveRoleChange">确定</button>
     </view>
-    <view class="issue_bottom_text">
-        <text style="margin-left:10rpx;">李健   12 12:00</text>
-    </view>
-</view>
-<view class="container">
-    <view class="mt-24"><text>架构设计（数据库 开发语言 服务器）</text></view>
-    <view class="tag-list">
-        
-        <image  style="width:32rpx;height:32rpx;floa:left" src="/image/icon/issue_type/task.png" mode="scaleToFill" />
-        <text class="prioirty_text"  style="margin-left:10rpx;">中<text>
-        
-    </view>
-    <view class="issue_bottom_text">
-        <text style="margin-left:10rpx;">韦朝夺 14 13:00</text>
-    </view>
-    
+
+    <picker-view value="{{roleIndex}}" onChange="roleChange">
+        <picker-view-column>
+          <view a:for={{roles}}>{{item}}</view>
+        </picker-view-column>
+      </picker-view>
+  </view>
+
+  <view class="pv-bottom" a:if="{{timePicker}}">
+    <picker-view value="{{value}}" onChange="timeChange" data-name="{{timeName}}">
+      <picker-view-column>
+        <view>2013</view>
+        <view>2014</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
 </view>
 
 
+<view class="issue-add">
+  <text class="iconfont icon-add"></text>
+</view>
 
   <template name="project-DropdownSelect">
-      <view a:if="{{listData}}" class="a-dropdown-wrapper {{active ? 'expand' : ''}}">
+      <view a:if="{{listData}}" class="a-dropdown-wrapper {{active || filter || sort ? 'expand' : ''}}">
           <view id="a-dropdown-nav" class="a-dropdown-nav">
-              <block a:for={{listData}}>
+              <block a:for={{listData}} class="a-dropdown-bar">
                   <view
-                      class="a-dropdown-nav-item {{ active && selectedNav ===index ? 'active' : ''}}"
+                      class="a-dropdown-nav-item {{ active && selectedNav === index ? 'active' : ''}}"
                       hover-class="a-dropdown-nav-item-hover"
                       onTap="_onNavItemTap"
                       data-index={{index}}
                   >
                        <image src="/image/logo.png" mode="scaleToFill" class="project-icon"/>
                        <text class="project-text"> {{item.nav}}</text>
-                       <view class="icon-project-select triangle "></view>
+                       <text class="iconfont icon-select"></text>
                   </view>
               </block>
-          </view> 
-          <scroll-view scroll-y="{{true}}" class="a-dropdown-contents">
+
+              <view class="search-bar">
+                <text class="iconfont icon-filter" onTap="filterIssue"></text>
+                <input placeholder="项目名称" onInput="bindKeyInput" class="search-input"/>
+                <text class="iconfont icon-sort" onTap="sortIssue"></text>
+              </view>
+          </view>
+
+          <view a:if="{{filter}}" class="search-filter">
+             <scroll-view class="search-filter-box search-filter-left" scroll-y="{{true}}">
+                <block a:for={{filterData}}>
+                  <view class="filter-item {{index == mainIndex ? 'active' : ''}}" onTap="setMainIndex" data-index={{index}}>
+                    {{item.name}}
+                    <text class="iconfont icon-arrow-right"></text>
+                  </view>
+                </block>
+             </scroll-view>
+            
+            <scroll-view class="search-filter-box search-filter-right" scroll-y="{{true}}">
+                <block a:for={{filterData[mainIndex].data}}>
+                  <view class="filter-item {{index === subIndex ? 'active' : ''}}" onTap="setSubIndex" data-index={{index}}>
+                    {{item.title}}
+                  </view>
+                </block>
+             </scroll-view>
+
+             <view class="search-filter-btns">
+               <button type="default" onTap="clearFilter" class="btn clear-btn">清空</button>
+               <button type="default" onTap="saveFilter" class="btn save-btn warn">确定</button>
+             </view>
+
+          </view>
+
+          <view a:if="{{sort}}" class="search-sort">
+             <scroll-view class="form-box" scroll-y="{{true}}">
+               <view class="form-group form-select">
+                  <text class="form-value">分类标签</text>
+                  <text class="form-action">请选择 <text class="iconfont icon-arrow-right"></text></text>
+               </view>
+
+               <view class="form-group">
+                  <view class="form-select">
+                    <text class="form-value">人员角色</text>
+                    <text class="form-action" onTap="selectRole">负责人 <text class="iconfont icon-arrow-right"></text></text>
+                  </view>
+                  
+                  <view class="block member-list">
+                    <text a:for={{sortData.members}} class="member-item" data-index="{{index}}">{{item.name}} <text class="iconfont icon-delete"></text></text>
+                    <button size="default" type="default" class="btn">添加</button>
+                  </view>
+               </view>
+
+               <view class="form-group">
+                  <text class="form-value">完成时间</text>
+                  <view class="interval-box">
+                    <view class="interval-inner">
+                       <text class="interval-item">{{startTime || "请选择"}}</text>
+                       <text class="separator">-</text>
+                       <text class="interval-item">{{endTime || "请选择"}}</text>
+                    </view>
+                  </view>
+               </view>
+
+               <view class="form-group">
+                  <text class="form-value">计划工期</text>
+                  <view class="interval-box">
+                    <view class="interval-inner">
+                       <input onInput="setStartDay" class="interval-item" placeholder="0"/>
+                       <text class="separator">-</text>
+                       <input onInput="setEndDay" class="interval-item" placeholder="0"/>
+                    </view>
+                  </view>
+               </view>
+
+               <view class="form-group">
+                  <text class="form-value">任务绩效</text>
+                  <view class="interval-box">
+                    <view class="interval-inner">
+                       <input onInput="setStartPerformance" class="interval-item" placeholder="0"/>
+                       <text class="separator">-</text>
+                       <input onInput="setEndDay" class="interval-item" placeholder="0"/>
+                    </view>
+                  </view>
+               </view>
+             </scroll-view>
+
+            <block>
+              <view class="sort-btns">
+                <button type="default" onTap="cancelSort" class="btn btn-cancel">取消</button>
+                <button type="default" onTap="saveSort" class="btn btn-save">确定</button>
+              </view>
+            </block>
+          </view>
+
+          <scroll-view a:if="{{active}}" scroll-y="{{true}}" class="a-dropdown-contents">
               <block a:for={{listData}} a:for-item="list" a:for-index="parentIndex">
                   <view hidden="{{selectedNav !== parentIndex}}">
                       <view class="a-dropdown-list-items {{active? 'show' : ''}}">

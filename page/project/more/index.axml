@@ -6,7 +6,7 @@
             class="grid-item" onTap="handleItemTap"
             data-index={{index}}>
                 <view class="grid-item-wrapper"> 
-                    <image   class="grid-icon" src="{{item.icon}}" mode="aspectFit" />
+                    <image class="grid-icon" src="{{item.icon}}" mode="aspectFit" />
                  
                     <text class="grid-text">{{item.text}}</text>
                 </view>

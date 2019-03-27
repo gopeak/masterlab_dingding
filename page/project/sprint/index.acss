@@ -5,7 +5,18 @@
   padding: 0;
 }
 
+/* .a-list-header {
+}
+
+.a-list-header .header-title {
+  flex: 1 auto;
+} */
  
+ .a-list-header .iconfont {
+   color: #666;
+   float: right;
+   cursor: pointer;
+ }
 
 .sprint-timelimit-section {
   background: #fff;
@@ -72,4 +83,8 @@
     font-size: 28rpx;
     line-height: 1;
     margin-top: 28rpx;
+}
+
+.sheet-box {
+  background: #fff;
 }
