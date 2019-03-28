@@ -47,10 +47,10 @@
       </view>
   </view>
 
-<view class="picker-box" a:if="{{rolesPicker || timePicker}}">
+<view class="picker-box" a:if="{{rolesPicker || timePicker || membersPicker}}">
   <view class="pv-bottom" a:if="{{rolesPicker}}">
     <view class="picker-btns">
-      <button size="default" type="default" class="btn">取消</button>
+      <button size="default" type="default" class="btn" onTap="cancelChange">取消</button>
       <button size="default" type="default" class="btn btn-warn" onTap="saveRoleChange">确定</button>
     </view>
 
@@ -61,11 +61,34 @@
       </picker-view>
   </view>
 
+  <view class="pv-bottom" a:if="{{membersPicker}}">
+    <view class="picker-btns">
+      <button size="default" type="default" class="btn" onTap="cancelChange">取消</button>
+      <button size="default" type="default" class="btn btn-warn" onTap="saveMemberChange">确定</button>
+    </view>
+
+    <picker-view value="{{memberIndex}}" onChange="memberChange">
+        <picker-view-column>
+          <view a:for={{members}}>{{item.name}}</view>
+        </picker-view-column>
+      </picker-view>
+  </view>
+
   <view class="pv-bottom" a:if="{{timePicker}}">
-    <picker-view value="{{value}}" onChange="timeChange" data-name="{{timeName}}">
+    <view class="picker-btns">
+      <button size="default" type="default" class="btn" onTap="cancelChange">取消</button>
+      <button size="default" type="default" class="btn btn-warn" onTap="saveTimeChange">确定</button>
+    </view>
+
+    <picker-view value="{{timeIndex}}" onChange="timeChange">
       <picker-view-column>
-        <view>2013</view>
-        <view>2014</view>
+        <view a:for={{years}}>{{item}}年</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view a:for={{months}}>{{item}}月</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view a:for={{days}}>{{item}}日</view>
       </picker-view-column>
     </picker-view>
   </view>
@@ -134,12 +157,12 @@
                <view class="form-group">
                   <view class="form-select">
                     <text class="form-value">人员角色</text>
-                    <text class="form-action" onTap="selectRole">负责人 <text class="iconfont icon-arrow-right"></text></text>
+                    <text class="form-action" onTap="selectRole">{{sortData.role || '负责人'}} <text class="iconfont icon-arrow-right"></text></text>
                   </view>
                   
                   <view class="block member-list">
-                    <text a:for={{sortData.members}} class="member-item" data-index="{{index}}">{{item.name}} <text class="iconfont icon-delete"></text></text>
-                    <button size="default" type="default" class="btn">添加</button>
+                    <text a:for={{sortData.members}} class="member-item"><text>{{item.name}}</text> <text class="iconfont icon-delete" data-index="{{index}}" onTap="deleteMember"></text></text>
+                    <button size="default" type="default" class="btn" onTap="addMember">添加</button>
                   </view>
                </view>
 
@@ -147,9 +170,9 @@
                   <text class="form-value">完成时间</text>
                   <view class="interval-box">
                     <view class="interval-inner">
-                       <text class="interval-item">{{startTime || "请选择"}}</text>
+                       <text class="interval-item" onTap="setTime" data-name="start">{{startTime || "请选择"}}</text>
                        <text class="separator">-</text>
-                       <text class="interval-item">{{endTime || "请选择"}}</text>
+                       <text class="interval-item" onTap="setTime" data-name="end">{{endTime || "请选择"}}</text>
                     </view>
                   </view>
                </view>
