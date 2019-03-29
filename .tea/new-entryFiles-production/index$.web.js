@@ -1,0 +1,17 @@
+require('@alipay/appx-compiler/lib/sjsEnvInit.js');
+require('./config$.js');
+require('../../node_modules/dd-charts/es/f2/index.js');
+require('../../page/project/index.js');
+require('../../page/project/issue2/index.js');
+require('../../page/project/workbench/index.js');
+require('../../page/biz/index.js');
+require('../../page/biz/pages/collapse/index.js');
+require('../../page/biz/pages/dropdown/index.js');
+require('../../page/biz/pages/error-view/index.js');
+require('../../page/biz/pages/grid/index.js');
+require('../../page/biz/pages/list/index.js');
+require('../../page/project/list/index.js');
+require('../../page/project/sprint/index.js');
+require('../../page/project/stat/index.js');
+require('../../page/biz/pages/tag/index.js');
+require('../../page/project/more/index.js');
