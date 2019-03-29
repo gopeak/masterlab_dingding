@@ -118,6 +118,16 @@ button {
   padding-top: 2rpx;
 }
 
+.a-dropdown-nav .icon-gengduo {
+  font-size: 40rpx;
+  display: inline-block;
+  line-height: 80rpx;
+  color: #888;
+  cursor: pointer;
+  padding: 10rpx 20rpx;
+
+}
+
 .a-dropdown-nav-item.active .icon-select {
   transform: rotate(180deg);
   padding-bottom: 6rpx;
@@ -131,7 +141,7 @@ button {
 
 .picker-box {
   position: fixed;
-  z-index: 9999;
+  z-index: 999999;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
@@ -172,4 +182,196 @@ button {
 .picker-btns .btn.btn-warn {
   border: 1px solid #f99542 !important;
   color: #f99542 !important;
+}
+
+.form-box {
+  display: block;
+  max-height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 9999;
+  padding-bottom: 20rpx;
+}
+
+.form-box .form-group {
+  display: block;
+  padding: 8rpx 5%;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  color: #666;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.form-select {
+  text-align: right;
+}
+
+.form-select .form-value{
+  float: left;
+}
+
+.form-select .form-action {
+  font-size: 26rpx;
+  color: #888;
+}
+
+.form-btns {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  display: -webkit-flex;  
+  border-top: 18rpx solid #eee;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+}
+
+.form-btns .btn {
+  width: 50%;
+  border: none;
+  height: 80rpx;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  margin: 0;
+}
+
+.form-btns .btn.btn-save {
+  background: #1296db;
+  color: #fff;
+}
+
+.form-btns .btn.btn-cancel {
+  color: #1296db;
+}
+
+.form-wrap {
+  height: 100%;
+  box-sizing: border-box;
+  padding-bottom: 80rpx;
+  background: #fff;
+  position: relative;
+  z-index: 999;
+}
+
+.form-group .interval-box {
+  padding: 20rpx 0;
+}
+
+.interval-box .interval-inner {
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.interval-box .interval-inner .separator {
+}
+
+.interval-box .interval-inner .interval-item {
+  width: 40%;
+  display: inline-block;
+  text-align: left;
+  font-size: 26rpx;
+  line-height: 50rpx;
+  height: 60rpx;
+  padding: 5rpx 10rpx;
+  box-sizing: border-box;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.layer-masker {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+}
+
+.layer-box {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding-bottom: 20rpx;
+  padding-top: 80rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e8e8e8;
+  z-index: 99999;
+  border-top: 2px solid #1296db;
+}
+
+.layer-title {
+  display: block;
+  height: 79rpx;
+  background: #fff;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  font-size: 28rpx;
+  line-height: 79rpx;
+  color: #333;
+  padding: 0 3%;
+  border-bottom: 1px solid #ddd;
+  z-index: 99999;
+}
+
+.layer-title .icon-back {
+  transform: rotate(180deg);
+  font-size: 40rpx;
+  margin-right: 15rpx;
+  color: #222;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.issue-picker {
+  position: absolute;
+  z-index: 99;
+  height: 40%;
+  width: 70%;
+  bottom: 10rpx;
+  left: 15%;
+  border-radius: 30rpx;
+  box-sizing: border-box;
+  padding-bottom: 60rpx;
+  overflow: hidden;
+  background: #fff;
+}
+
+.issue-picker .issue-picker-list{
+  height: 100%;
+}
+
+.issue-picker .issue-picker-item {
+  font-size: 32rpx;
+  line-height: 80rpx;
+  text-align: center;
+  padding: 5rpx 10rpx;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.issue-picker-action {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  height: 60rpx;
+  z-index: 99;
+  bottom: 22rpx;
+  left: 0;
+}
+
+.issue-picker .iconfont {
+  font-size: 50rpx;
+  font-weight: bold;
+  line-height: 50rpx;
+  text-align: center;
+  cursor: pointer;
+  color: #666;
 }

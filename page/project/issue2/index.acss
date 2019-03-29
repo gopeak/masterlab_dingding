@@ -528,7 +528,7 @@
 
 .search-bar {
   display: inline-block;
-  width: 60%;
+  width: 55%;
   vertical-align: middle;
   padding: 26rpx 0;
 }
@@ -550,7 +550,7 @@
 }
 
 .search-bar .search-input {
-  width: 58%;
+  width: 52%;
   height: 38rpx;
   font-size: 26rpx;
   vertical-align: middle;
@@ -645,67 +645,6 @@
   z-index: 999;
 }
 
-.search-sort .form-box {
-  display: block;
-  max-height: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  z-index: 9999;
-  padding-bottom: 20rpx;
-}
-
-.search-sort .form-group {
-  display: block;
-  padding: 8rpx 5%;
-  font-size: 30rpx;
-  line-height: 60rpx;
-  color: #666;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.form-select {
-  text-align: right;
-}
-
-.form-select .form-value{
-  float: left;
-}
-
-.form-select .form-action {
-  font-size: 26rpx;
-  color: #888;
-}
-
-.search-sort .sort-btns {
-  width: 100%;
-  height: 80rpx;
-  display: flex;
-  display: -webkit-flex;  
-  border-top: 18rpx solid #eee;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0;
-}
-
-.search-sort .sort-btns .btn {
-  width: 50%;
-  border: none;
-  height: 80rpx;
-  font-size: 28rpx;
-  line-height: 80rpx;
-  margin: 0;
-}
-
-.sort-btns .btn.btn-save {
-  background: #1296db;
-  color: #fff;
-}
-
-.sort-btns .btn.btn-cancel {
-  color: #1296db;
-}
-
 .member-list .member-item,
 .member-list .btn {
   font-size: 26rpx;
@@ -724,44 +663,19 @@
   cursor: pointer;
 }
 
-.search-sort .form-group .interval-box {
-  padding: 20rpx 0;
-}
-
-.interval-box .interval-inner {
-  border: 1px solid #e8e8e8;
-  border-radius: 4px;
-  text-align: center;
-}
-
-.interval-box .interval-inner .separator {
-}
-
-.interval-box .interval-inner .interval-item {
-  width: 40%;
-  display: inline-block;
-  text-align: left;
-  font-size: 26rpx;
-  line-height: 50rpx;
-  height: 60rpx;
-  padding: 5rpx 10rpx;
-  box-sizing: border-box;
-  vertical-align: middle;
-  text-align: center;
-}
-
 .issue-add {
-  width: 60rpx;
-  height: 60rpx;
+  width: 65rpx;
+  height: 65rpx;
   position: fixed;
   z-index: 9;
   text-align: center;
   bottom: 50rpx;
-  right: 10rpx;
+  right: 18rpx;
 }
 
 .issue-add .iconfont {
-  font-size: 60rpx;
-  line-height: 60rpx;
+  font-size: 65rpx;
+  line-height: 65rpx;
   color: #1296db;
 }
+

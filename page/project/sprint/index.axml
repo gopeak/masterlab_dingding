@@ -10,10 +10,11 @@
                     data-index={{index}}
                 >
                     <view  style="float:left;margin-left:20rpx;">{{item.nav}}
-                      <view  style="vertical-align:middle" class="triangle"></view>
-                      </view>
-                    
+                      <text class="iconfont icon-select"></text>
+                    </view>                    
                 </view>
+
+                <text class="iconfont icon-gengduo"></text>
             </block>
         </view>
 
@@ -55,7 +56,7 @@
         <view>
             <view class="a-list">
                 <block a:if={{header}}>
-                    <view class="a-list-header">{{header}}</view>
+                    <view class="a-list-header">{{header}} <text class="iconfont icon-sheet" onTap="filterSprint"></text></view>
                 </block>
                 <view a:if={{data}} class="a-list-items">
                     <block a:for={{data}}>
@@ -110,7 +111,6 @@
 <view class="a-list">
   <view class="a-list-header">
     <text class="header-title">燃尽图</text>
-    <text class="iconfont icon-sheet"></text>
   </view> 
 </view>
 
@@ -121,3 +121,17 @@
 <view>
     <template is="List" data={{...listData}}>
 </view>
+
+<view class="layer-box" a:if="{{sprintPicker && masker}}">
+  <view class="issue-picker">
+    <scroll-view scroll-y="{{true}}" class="issue-picker-list issue-picker-bg">
+      <view class="issue-picker-item" a:for={{tags}} data-index={{index}} onTap="selectSprint">{{item.label}}</view>
+    </scroll-view>
+
+    <view class="issue-picker-bg issue-picker-action">
+      <text class="iconfont icon-delete" onTap="closeSprintPickeer"></text>
+    </view>
+  </view>
+</view>
+
+<view class="layer-masker" a:if="{{masker}}" onTap="maskerHidden"></view>

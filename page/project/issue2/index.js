@@ -79,18 +79,11 @@ Page({
       mainIndex: 0,
       subIndex: 0,
       sortData: {
-        title: "",
-        role: "",
-        members: [],
-        startTime: "请选择",
-        endTime: "请选择",
-        startDay: 0,
-        endDay: 0,
-        startPerformance: 0,
-        endPerformance: 0,
-        desc: ""
+        time: "",
+        name: ""
       }
     },
+    picker: false,
     tempRole: "",
     roleIndex: 0,
     memberIndex: 0,
@@ -99,6 +92,7 @@ Page({
     membersPicker: false,
     rolesPicker: false,
     timePicker: false,
+    issuePicker: false,
     timeName: "start",
     tempMember: {},
     selectedLables: '已解决',
@@ -142,7 +136,22 @@ Page({
     dayIndex: 0,
     years: ["2012", "2013", "2014", "2015", "2016"],
     months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-    days: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+    days: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+    addIssue: false,
+    masker: false,
+    issue: {
+      title: "",
+      role: "",
+      members: [],
+      startTime: "请选择",
+      endTime: "请选择",
+      startDay: 0,
+      endDay: 0,
+      startPerformance: 0,
+      endPerformance: 0,
+      desc: ""
+    },
+    sort: ["升序", "降序"]
   },
 
   onTagChange1(e) {
@@ -259,6 +268,7 @@ Page({
   selectRole(e) {
     let temp = this.data.rolesPicker;
     this.setData({
+      picker: !temp,
       rolesPicker: !temp
     });
   },
@@ -272,13 +282,15 @@ Page({
   saveRoleChange(e) {
     let temp = this.data.tempRole;
      this.setData({
+        picker: false,
         rolesPicker: false,
-        "dropdownSelectData.sortData.role": temp
+        "issue.role": temp
     });
   },
   addMember(e) {
     let temp = this.data.membersPicker;
     this.setData({
+      picker: !temp,
       membersPicker: !temp
     });
   },
@@ -296,9 +308,10 @@ Page({
   },
   saveMemberChange(e) {
     let temp = this.data.tempMember;
-    let length = this.data.dropdownSelectData.sortData.members.length;
-    this.data.dropdownSelectData.sortData.members = this.data.dropdownSelectData.sortData.members.push(temp);
+    let length = this.data.issue.members.length;
+    this.data.issue.members = this.data.issue.members.push(temp);
     this.setData({
+      picker: false,
       membersPicker: false
     });  
   },
@@ -306,6 +319,7 @@ Page({
     let temp = this.data.timePicker;
     let name = e.target.dataset.name;
     this.setData({
+      picker: !temp,
       timePicker: !temp,
       timeName: name
     });
@@ -335,14 +349,14 @@ Page({
     });
   },
   saveTimeChange(e) {
-    let data = this.data.dropdownSelectData;
+    let data = this.data.issue;
     let year = this.data.years[this.data.yearIndex];
     let month = this.data.months[this.data.monthIndex];
     let day = this.data.days[this.data.dayIndex];
     let date = year + '-' + month + '-' + day;
 
-    let startDay = data.sortData.startTime;
-    let endDay = data.sortData.endTime;
+    let startDay = data.startTime;
+    let endDay = data.endTime;
 
     if(this.data.timeName === "start"){
       startDay = date;
@@ -351,14 +365,52 @@ Page({
     }
 
      this.setData({
+        picker: false,
         timePicker: false,
-        "dropdownSelectData.sortData.startTime": startDay,
-        "dropdownSelectData.sortData.endTime": endDay
+        "issue.startTime": startDay,
+        "issue.endTime": endDay
     });
   },
   cancelChange(e) {
     this.setData({
+      picker: false,
       timePicker: false,
+      rolesPicker: false,
+      membersPicker: false
+    });
+  },
+  issueAction(e) {
+    let issue_id = e.target.dataset.id;
+    let temp = this.data.issuePicker;
+    this.setData({
+      picker: !temp,
+      issuePicker: !temp
+    });
+  },
+  closeIssuePickeer(e) {
+    this.setData({
+      picker: false,
+      issuePicker: false
+    });
+  },
+  issueAdd(e) {
+    this.setData({
+      masker: true,
+      addIssue: true
+    });
+  },
+  maskerHidden(e) {
+    this.setData({
+      masker: false,
+      addIssue: false
+    });
+  },
+  backIssue(e) {
+    this.setData({
+      masker: false,
+      addIssue: false,
+      picker: false,
+      issuePicker: false,
       rolesPicker: false,
       membersPicker: false
     });

@@ -59,9 +59,28 @@ Page({
   ...list,
   data: {
     width:200,
-       height:200,
-       chart: null,
-     dropdownSelectData: {
+    height:200,
+    chart: null,
+    marsker: false,
+    sprintPicker: false,
+    tags: [
+        {
+            label: '待处理',
+            selected: false,
+            onChange: 'onTagChange1',
+        },
+        {
+            label: '进行中',
+            selected: true,
+            onChange: 'onTagChange2',
+        },
+        {
+            label: '已解决',
+            selected: false,
+            onChange: 'onTagChange3',
+        }
+    ],
+    dropdownSelectData: {
       active: false,
       selectedNav: 0,
       listData: [
@@ -81,23 +100,22 @@ Page({
           ]
         },
       ],
-    },
-    
+    },    
     grid: {
-            list: [
-                {
-                    "color": "coral",
-                    "header": "时间",
-                    "text": "2019.3.21--2019.3.30"
-                },
-                {
-                   "header": "倒计时",
-                    "color": "blue",
-                    "text": "10天 20时 20分"
-                },
-            ],
-            columnNum: 2
-        },
+        list: [
+            {
+                "color": "coral",
+                "header": "时间",
+                "text": "2019.3.21--2019.3.30"
+            },
+            {
+                "header": "倒计时",
+                "color": "blue",
+                "text": "10天 20时 20分"
+            },
+        ],
+        columnNum: 2
+    },
     handleItemTap(e) {
         dd.showToast({
           content: `第${e.currentTarget.dataset.index}个Item`,
@@ -233,6 +251,31 @@ Page({
       success: (res) => {
 
       },
+    });
+  },
+  filterSprint(e) {
+    let temp = this.data.sprintPicker;
+    this.setData({
+      masker: !temp,
+      sprintPicker: !temp
+    });
+  },
+  maskerHidden(e) {
+    this.setData({
+      masker: false,
+      sprintPicker: false
+    });
+  },
+  closeSprintPickeer(e) {
+    this.setData({
+      masker: false,
+      sprintPicker: false
+    });
+  },
+  selectSprint(e) {
+    this.setData({
+      masker: false,
+      sprintPicker: false
     });
   }
 })

@@ -20,7 +20,7 @@
           <view class="issue-time issue-info">14 13:00</view>
       </view>
 
-      <view class="issue-action">
+      <view class="issue-action" data-id="1" onTap="issueAction">
         <text class="iconfont icon-gengduo"></text>
       </view>
   </view>
@@ -42,12 +42,12 @@
           <view class="issue-time issue-info">14 13:00</view>
       </view>
 
-      <view class="issue-action">
+      <view class="issue-action" data-id="2" onTap="issueAction">
         <text class="iconfont icon-gengduo"></text>
       </view>
   </view>
 
-<view class="picker-box" a:if="{{rolesPicker || timePicker || membersPicker}}">
+<view class="picker-box" a:if="{{picker}}">
   <view class="pv-bottom" a:if="{{rolesPicker}}">
     <view class="picker-btns">
       <button size="default" type="default" class="btn" onTap="cancelChange">取消</button>
@@ -92,10 +92,86 @@
       </picker-view-column>
     </picker-view>
   </view>
+
+  <view class="issue-picker" a:if="issuePicker">
+    <scroll-view scroll-y="{{true}}" class="issue-picker-list issue-picker-bg">
+      <view class="issue-picker-item" a:for={{tags}} data-index={{index}}>{{item.label}}</view>
+    </scroll-view>
+
+    <view class="issue-picker-bg issue-picker-action">
+      <text class="iconfont icon-delete" onTap="closeIssuePickeer"></text>
+    </view>
+  </view>
 </view>
 
+<view class="layer-box" a:if="{{addIssue && masker}}">
+  <view class="layer-title"><text class="iconfont icon-arrow-right icon-back" onTap="backIssue"></text>新增事项</view>
+  <view class="form-wrap">
+    <scroll-view class="form-box" scroll-y="{{true}}">
+      <view class="form-group form-select">
+        <text class="form-value">分类标签</text>
+        <text class="form-action">请选择 <text class="iconfont icon-arrow-right"></text></text>
+      </view>
 
-<view class="issue-add">
+      <view class="form-group">
+        <view class="form-select">
+          <text class="form-value">人员角色</text>
+          <text class="form-action" onTap="selectRole">{{issue.role || '负责人'}} <text class="iconfont icon-arrow-right"></text></text>
+        </view>
+        
+        <view class="block member-list">
+          <text a:for={{issue.members}} class="member-item"><text>{{item.name}}</text> <text class="iconfont icon-delete" data-index="{{index}}" onTap="deleteMember"></text></text>
+          <button size="default" type="default" class="btn" onTap="addMember">添加</button>
+        </view>
+      </view>
+
+      <view class="form-group">
+        <text class="form-value">完成时间</text>
+        <view class="interval-box">
+          <view class="interval-inner">
+              <text class="interval-item" onTap="setTime" data-name="start">{{issue.startTime || "请选择"}}</text>
+              <text class="separator">-</text>
+              <text class="interval-item" onTap="setTime" data-name="end">{{issue.endTime || "请选择"}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="form-group">
+        <text class="form-value">计划工期</text>
+        <view class="interval-box">
+          <view class="interval-inner">
+              <input onInput="setStartDay" class="interval-item" placeholder="0"/>
+              <text class="separator">-</text>
+              <input onInput="setEndDay" class="interval-item" placeholder="0"/>
+          </view>
+        </view>
+      </view>
+
+      <view class="form-group">
+        <text class="form-value">任务绩效</text>
+        <view class="interval-box">
+          <view class="interval-inner">
+              <input onInput="setStartPerformance" class="interval-item" placeholder="0"/>
+              <text class="separator">-</text>
+              <input onInput="setEndDay" class="interval-item" placeholder="0"/>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <block>
+      <view class="form-btns">
+        <button type="default" onTap="cancelIssue" class="btn btn-cancel">取消</button>
+        <button type="default" onTap="saveIssue" class="btn btn-save">确定</button>
+      </view>
+    </block>
+  </view>
+</view>
+
+<view class="layer-masker" a:if="{{masker}}" onTap="maskerHidden"></view>
+
+
+<view class="issue-add" onTap="issueAdd">
   <text class="iconfont icon-add"></text>
 </view>
 
@@ -147,55 +223,17 @@
 
           </view>
 
-          <view a:if="{{sort}}" class="search-sort">
+          <view a:if="{{sort}}" class="form-wrap">
              <scroll-view class="form-box" scroll-y="{{true}}">
                <view class="form-group form-select">
-                  <text class="form-value">分类标签</text>
-                  <text class="form-action">请选择 <text class="iconfont icon-arrow-right"></text></text>
+                  <text class="form-value">日期</text>
+                  <text class="form-action" onTap="sortByTime">{{sortData.time || '请选择'}} <text class="iconfont icon-arrow-right"></text></text>
                </view>
 
                <view class="form-group">
                   <view class="form-select">
-                    <text class="form-value">人员角色</text>
-                    <text class="form-action" onTap="selectRole">{{sortData.role || '负责人'}} <text class="iconfont icon-arrow-right"></text></text>
-                  </view>
-                  
-                  <view class="block member-list">
-                    <text a:for={{sortData.members}} class="member-item"><text>{{item.name}}</text> <text class="iconfont icon-delete" data-index="{{index}}" onTap="deleteMember"></text></text>
-                    <button size="default" type="default" class="btn" onTap="addMember">添加</button>
-                  </view>
-               </view>
-
-               <view class="form-group">
-                  <text class="form-value">完成时间</text>
-                  <view class="interval-box">
-                    <view class="interval-inner">
-                       <text class="interval-item" onTap="setTime" data-name="start">{{startTime || "请选择"}}</text>
-                       <text class="separator">-</text>
-                       <text class="interval-item" onTap="setTime" data-name="end">{{endTime || "请选择"}}</text>
-                    </view>
-                  </view>
-               </view>
-
-               <view class="form-group">
-                  <text class="form-value">计划工期</text>
-                  <view class="interval-box">
-                    <view class="interval-inner">
-                       <input onInput="setStartDay" class="interval-item" placeholder="0"/>
-                       <text class="separator">-</text>
-                       <input onInput="setEndDay" class="interval-item" placeholder="0"/>
-                    </view>
-                  </view>
-               </view>
-
-               <view class="form-group">
-                  <text class="form-value">任务绩效</text>
-                  <view class="interval-box">
-                    <view class="interval-inner">
-                       <input onInput="setStartPerformance" class="interval-item" placeholder="0"/>
-                       <text class="separator">-</text>
-                       <input onInput="setEndDay" class="interval-item" placeholder="0"/>
-                    </view>
+                    <text class="form-value"></text>
+                    <text class="form-action" onTap="sortByTag">{{sortData.tag || '请选择'}} <text class="iconfont icon-arrow-right"></text></text>
                   </view>
                </view>
              </scroll-view>
