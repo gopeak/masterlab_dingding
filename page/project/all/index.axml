@@ -1,0 +1,167 @@
+<view class="project-header">
+   <view class="pro-tabs">
+     <text a:for={{tabs}} data-tab={{index}} class="tab-item {{tab === item.id ? 'active' : ''}}" onTap="changeTab">{{item.name}}</text>
+   </view>
+
+   <text class="iconfont icon-sort1" onTap="issueAction"></text>
+</view>
+
+<view class="issue-list">
+  <view class="issue-item" a:for={{curIssues}}>
+      <view class="issue-status {{item.statusClass}}">{{item.status}}</view>
+      <view class="issue-title"><text>{{item.title}}</text></view>
+      <view class="issue_bottom_text">
+           <view class="issue-info tag-list">
+              <image class="tag-img issue-img" src="{{item.prioirtyImg}}" />
+              <text class="prioirty_text tag-text">{{item.prioirty}}<text>
+          </view>
+
+          <view class="issue-info issue-member">
+            <image class="member-img issue-img" src="{{item.memberImg}}" />
+            <text class="member-name">{{item.member}}</text>
+          </view>
+
+          <view class="issue-time issue-info">{{item.time}}</view>
+      </view>
+
+      <view class="issue-action" data-id={{item.id}} onTap="issueAction">
+        <text class="iconfont icon-gengduo"></text>
+      </view>
+  </view>
+</view>
+
+<view class="picker-box" a:if="{{picker}}">
+  <view class="pv-bottom" a:if="{{rolesPicker}}">
+    <view class="picker-btns">
+      <button size="default" type="default" class="btn" onTap="cancelChange">取消</button>
+      <button size="default" type="default" class="btn btn-warn" onTap="saveRoleChange">确定</button>
+    </view>
+
+    <picker-view value="{{roleIndex}}" onChange="roleChange">
+        <picker-view-column>
+          <view a:for={{roles}}>{{item}}</view>
+        </picker-view-column>
+      </picker-view>
+  </view>
+
+  <view class="pv-bottom" a:if="{{membersPicker}}">
+    <view class="picker-btns">
+      <button size="default" type="default" class="btn" onTap="cancelChange">取消</button>
+      <button size="default" type="default" class="btn btn-warn" onTap="saveMemberChange">确定</button>
+    </view>
+
+    <picker-view value="{{memberIndex}}" onChange="memberChange">
+        <picker-view-column>
+          <view a:for={{members}}>{{item.name}}</view>
+        </picker-view-column>
+      </picker-view>
+  </view>
+
+  <view class="pv-bottom" a:if="{{timePicker}}">
+    <view class="picker-btns">
+      <button size="default" type="default" class="btn" onTap="cancelChange">取消</button>
+      <button size="default" type="default" class="btn btn-warn" onTap="saveTimeChange">确定</button>
+    </view>
+
+    <picker-view value="{{timeIndex}}" onChange="timeChange">
+      <picker-view-column>
+        <view a:for={{years}}>{{item}}年</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view a:for={{months}}>{{item}}月</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view a:for={{days}}>{{item}}日</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+
+  <view class="issue-picker" a:if="issuePicker">
+     <view class="issue-picker-bg issue-picker-action">
+        <text class="picker-title">标题</text>
+        <text class="iconfont icon-cancel" onTap="closeIssuePickeer"></text>
+     </view>
+    
+   <scroll-view scroll-y="{{true}}" class="issue-picker-list issue-picker-bg">
+      <view class="issue-picker-item" a:for={{actions}} data-index={{index}} onTap="issueAction">
+        <image src="{{item.img}}" mode="scaleToFill" class="picker-item-img" />
+        <view class="picker-item-content">
+          <view class="content-title">{{item.name}}</view>
+          <view class="content-desc">{{item.desc}}</view>
+        </view>
+        <view class="iconfont icon-arrow-right picker-item-action"></view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+<view class="layer-box" a:if="{{addIssue && masker}}">
+  <view class="layer-title"><text class="iconfont icon-arrow-right icon-back" onTap="backIssue"></text>新增事项</view>
+  <view class="form-wrap">
+    <scroll-view class="form-box" scroll-y="{{true}}">
+      <view class="form-group form-select">
+        <text class="form-value">分类标签</text>
+        <text class="form-action">请选择 <text class="iconfont icon-arrow-right"></text></text>
+      </view>
+
+      <view class="form-group">
+        <view class="form-select">
+          <text class="form-value">人员角色</text>
+          <text class="form-action" onTap="selectRole">{{issue.role || '负责人'}} <text class="iconfont icon-arrow-right"></text></text>
+        </view>
+        
+        <view class="block member-list">
+          <text a:for={{issue.members}} class="member-item"><text>{{item.name}}</text> <text class="iconfont icon-delete" data-index="{{index}}" onTap="deleteMember"></text></text>
+          <button size="default" type="default" class="btn" onTap="addMember">添加</button>
+        </view>
+      </view>
+
+      <view class="form-group">
+        <text class="form-value">完成时间</text>
+        <view class="interval-box">
+          <view class="interval-inner">
+              <text class="interval-item" onTap="setTime" data-name="start">{{issue.startTime || "请选择"}}</text>
+              <text class="separator">-</text>
+              <text class="interval-item" onTap="setTime" data-name="end">{{issue.endTime || "请选择"}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="form-group">
+        <text class="form-value">计划工期</text>
+        <view class="interval-box">
+          <view class="interval-inner">
+              <input onInput="setStartDay" class="interval-item" placeholder="0"/>
+              <text class="separator">-</text>
+              <input onInput="setEndDay" class="interval-item" placeholder="0"/>
+          </view>
+        </view>
+      </view>
+
+      <view class="form-group">
+        <text class="form-value">任务绩效</text>
+        <view class="interval-box">
+          <view class="interval-inner">
+              <input onInput="setStartPerformance" class="interval-item" placeholder="0"/>
+              <text class="separator">-</text>
+              <input onInput="setEndDay" class="interval-item" placeholder="0"/>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <block>
+      <view class="form-btns">
+        <button type="default" onTap="cancelIssue" class="btn btn-cancel">取消</button>
+        <button type="default" onTap="saveIssue" class="btn btn-save">确定</button>
+      </view>
+    </block>
+  </view>
+</view>
+
+<view class="layer-masker" a:if="{{masker}}" onTap="maskerHidden"></view>
+
+
+<view class="issue-add" onTap="issueAdd">
+  <text class="iconfont icon-add"></text>
+</view>
