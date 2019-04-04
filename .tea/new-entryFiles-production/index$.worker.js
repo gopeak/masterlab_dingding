@@ -33,6 +33,7 @@ require('../../page/project/sprint/index.js?appxworker=1');
 require('../../page/project/stat/index.js?appxworker=1');
 require('../../page/biz/pages/tag/index.js?appxworker=1');
 require('../../page/project/more/index.js?appxworker=1');
+require('../../page/project/all/index.js?appxworker=1');
 }
 self.bootstrapApp ? self.bootstrapApp({ success: success }) : success();
 }

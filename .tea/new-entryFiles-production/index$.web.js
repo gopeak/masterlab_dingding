@@ -15,3 +15,4 @@ require('../../page/project/sprint/index.js');
 require('../../page/project/stat/index.js');
 require('../../page/biz/pages/tag/index.js');
 require('../../page/project/more/index.js');
+require('../../page/project/all/index.js');

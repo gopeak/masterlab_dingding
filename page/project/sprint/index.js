@@ -63,22 +63,32 @@ Page({
     chart: null,
     marsker: false,
     sprintPicker: false,
-    tags: [
-        {
-            label: '待处理',
-            selected: false,
-            onChange: 'onTagChange1',
-        },
-        {
-            label: '进行中',
-            selected: true,
-            onChange: 'onTagChange2',
-        },
-        {
-            label: '已解决',
-            selected: false,
-            onChange: 'onTagChange3',
-        }
+    sprintAction: false,
+    actions: [
+      {
+        id: 1,
+        name: "详情",
+        img: "/image/logo.png",
+        desc: "查看该事项下的详细信息"
+      },
+      {
+        id: 2,
+        name: "编辑",
+        img: "/image/logo.png",
+        desc: "编辑事项内容"
+      },
+      {
+        id: 3,
+        name: "删除",
+        img: "/image/logo.png",
+        desc: "删除该事项"
+      },
+      {
+        id: 4,
+        name: "加入迭代",
+        img: "/image/logo.png",
+        desc: "将该事项加入某个迭代"
+      }
     ],
     dropdownSelectData: {
       active: false,
@@ -269,12 +279,21 @@ Page({
   closeSprintPickeer(e) {
     this.setData({
       masker: false,
-      sprintPicker: false
+      sprintPicker: false,
+      sprintAction: false
     });
   },
   selectSprint(e) {
     this.setData({
       masker: false,
+      sprintPicker: false
+    });
+  },
+  actionSprint(e) {
+    let temp = this.data.sprintAction;
+    this.setData({
+      masker: !temp,
+      sprintAction: !temp,
       sprintPicker: false
     });
   }

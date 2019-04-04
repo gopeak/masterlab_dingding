@@ -151,7 +151,33 @@ Page({
       endPerformance: 0,
       desc: ""
     },
-    sort: ["升序", "降序"]
+    sort: ["升序", "降序"],
+    actions: [
+      {
+        id: 1,
+        name: "详情",
+        img: "/image/logo.png",
+        desc: "查看该事项下的详细信息"
+      },
+      {
+        id: 2,
+        name: "编辑",
+        img: "/image/logo.png",
+        desc: "编辑事项内容"
+      },
+      {
+        id: 3,
+        name: "删除",
+        img: "/image/logo.png",
+        desc: "删除该事项"
+      },
+      {
+        id: 4,
+        name: "加入迭代",
+        img: "/image/logo.png",
+        desc: "将该事项加入某个迭代"
+      }
+    ]
   },
 
   onTagChange1(e) {
@@ -413,6 +439,12 @@ Page({
       issuePicker: false,
       rolesPicker: false,
       membersPicker: false
+    });
+  },
+  cancelIssue(e) {
+    this.setData({
+      masker: false,
+      addIssue: false
     });
   }
 });

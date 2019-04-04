@@ -94,13 +94,21 @@
   </view>
 
   <view class="issue-picker" a:if="issuePicker">
-    <scroll-view scroll-y="{{true}}" class="issue-picker-list issue-picker-bg">
-      <view class="issue-picker-item" a:for={{tags}} data-index={{index}}>{{item.label}}</view>
+     <view class="issue-picker-bg issue-picker-action">
+        <text class="picker-title">标题</text>
+        <text class="iconfont icon-cancel" onTap="closeIssuePickeer"></text>
+     </view>
+    
+   <scroll-view scroll-y="{{true}}" class="issue-picker-list issue-picker-bg">
+      <view class="issue-picker-item" a:for={{actions}} data-index={{index}} onTap="issueAction">
+        <image src="{{item.img}}" mode="scaleToFill" class="picker-item-img" />
+        <view class="picker-item-content">
+          <view class="content-title">{{item.name}}</view>
+          <view class="content-desc">{{item.desc}}</view>
+        </view>
+        <view class="iconfont icon-arrow-right picker-item-action"></view>
+      </view>
     </scroll-view>
-
-    <view class="issue-picker-bg issue-picker-action">
-      <text class="iconfont icon-delete" onTap="closeIssuePickeer"></text>
-    </view>
   </view>
 </view>
 

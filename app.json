@@ -13,7 +13,8 @@
     "page/project/sprint/index",
     "page/project/stat/index",
     "page/biz/pages/tag/index",
-    "page/project/more/index"
+    "page/project/more/index",
+    "page/project/all/index"
   ],
   "window": {
     "enableWK": "YES",
@@ -51,12 +52,18 @@
         "icon": "image/toolbar/stat.png",
         "activeIcon": "image/toolbar/stat_active.png",
         "name": "统 计"
+      },      
+      {
+        "pagePath": "page/project/all/index",
+        "icon": "image/toolbar/more2.png",
+        "activeIcon": "image/toolbar/more2_active.png",
+        "name": "全部"
       },
       {
         "pagePath": "page/project/more/index",
         "icon": "image/toolbar/more2.png",
         "activeIcon": "image/toolbar/more2_active.png",
-        "name": "更 多"
+        "name": "更多"
       }
     ]
   },

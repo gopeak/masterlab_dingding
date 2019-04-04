@@ -334,44 +334,90 @@ button {
 .issue-picker {
   position: absolute;
   z-index: 99;
-  height: 40%;
-  width: 70%;
-  bottom: 10rpx;
-  left: 15%;
-  border-radius: 30rpx;
+  height: 50%;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  border-radius: 2px;
   box-sizing: border-box;
-  padding-bottom: 60rpx;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   background: #fff;
+  padding-bottom: 10rpx;
 }
 
 .issue-picker .issue-picker-list{
   height: 100%;
+  flex: 1 auto;
+  padding: 0 30rpx;
 }
 
 .issue-picker .issue-picker-item {
   font-size: 32rpx;
   line-height: 80rpx;
-  text-align: center;
-  padding: 5rpx 10rpx;
+  padding: 16rpx 18rpx;
   border-bottom: 1px solid #e8e8e8;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.issue-picker .issue-picker-item .picker-item-img {
+  display: block;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+.issue-picker .issue-picker-item .picker-item-content {
+  flex: 1 auto;
+  padding: 2rpx 20rpx;
+}
+
+.picker-item-content .content-title{
+  font-size: 28rpx;
+  line-height: 45rpx;
+  color: #666;
+}
+
+.picker-item-content .content-desc {
+  font-size: 26rpx;
+  line-height: 32rpx;
+  color: #999;
+}
+
+.picker-item-action {
+  font-size: 28rpx;
+  line-height: 80rpx;
+  color: #888;
 }
 
 .issue-picker-action {
-  position: absolute;
   width: 100%;
-  text-align: center;
-  height: 60rpx;
-  z-index: 99;
-  bottom: 22rpx;
-  left: 0;
+  height: 88rpx;
+  padding: 14rpx 0;
+  border-bottom: 1px solid #ddd;
+  position: relative;
 }
 
-.issue-picker .iconfont {
-  font-size: 50rpx;
+.issue-picker-action .picker-title {
+  font-size: 28rpx;
+  line-height: 60rpx;
+  color: #333;
+  padding-left: 30rpx;
+}
+
+.issue-picker-action .iconfont {
+  font-size: 28rpx;
   font-weight: bold;
   line-height: 50rpx;
   text-align: center;
   cursor: pointer;
   color: #666;
+  position: absolute;
+  top: 50%;
+  margin-top: -25rpx;
+  right: 30rpx;
+  color: #888;
 }
