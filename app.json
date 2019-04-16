@@ -52,13 +52,7 @@
         "icon": "image/toolbar/stat.png",
         "activeIcon": "image/toolbar/stat_active.png",
         "name": "统 计"
-      },      
-      {
-        "pagePath": "page/project/all/index",
-        "icon": "image/toolbar/more2.png",
-        "activeIcon": "image/toolbar/more2_active.png",
-        "name": "全部"
-      },
+      },     
       {
         "pagePath": "page/project/more/index",
         "icon": "image/toolbar/more2.png",

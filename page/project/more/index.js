@@ -11,19 +11,23 @@ Page({
             list: [
                 {
                     "icon": "/image/icon/more/hover.png",
-                    "text": "切换项目"
+                    "text": "切换项目",
+                    "link":""
                 },
                 {
                     "icon": "/image/icon/more/new.png",
-                    "text": "新增项目"
+                    "text": "新增项目",
+                    "link":"page/project/all/index"
                 },
                 {
                     "icon": "/image/icon/more/manager.png",
-                    "text": "全部项目"
+                    "text": "全部项目",
+                    "link":"page/project/all/index"
                 },
                 {
                     "icon": "",
-                    "text": ""
+                    "text": "",
+                    "link":""
                 }
             ],
             columnNum: 4
@@ -72,12 +76,12 @@ Page({
         }
   },
     handleItemTap(e) {
-        dd.showToast({
-          content: `第${e.currentTarget.dataset.index}个Item`,
-          success: (res) => {
-            
-          },
+
+        console.log(e.currentTarget); 
+        dd.navigateTo({
+          url: '/page/project/all/index'
         });
+ 
     }
 
 })
